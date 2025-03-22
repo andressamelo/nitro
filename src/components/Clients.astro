@@ -1,0 +1,61 @@
+---
+import ccl from '../assets/clients/ccl.png';
+import viva from '../assets/clients/viva.webp';
+import brena from '../assets/clients/brena.webp';
+---
+
+<section class="container">
+	<h2>Quem já <span class="contrast">acelerou</span> com a gente</h2>
+</section>
+
+<div class="clients">
+	<section class="container">
+		<img src={viva.src} alt="Viva em ação" />
+		<img src={ccl.src} alt="Campinas Corte Laser" />
+		<img src={brena.src} alt="Brena Cuel" />
+	</section>
+</div>
+
+<style>
+	.container {
+		display: flex;
+    	align-items: center;
+		gap: 36px;
+
+		@media only screen and (min-width: 768px) {
+			width: 1200px;
+			margin: 0 auto;
+		}
+	}
+    .clients {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		margin-top: 36px;
+		width: 100vw;
+		padding: 46px 0;
+		margin-bottom: 180px;
+
+		@media only screen and (min-width: 768px) {
+			flex-direction: row;
+		}
+	}
+	.clients img {
+		max-width: 140px;
+	}
+
+	h2 {
+		font-family: "Bebas Neue", serif;
+		font-weight: 400;
+		font-style: normal;
+		font-size: 56px;
+		margin: 0;
+        background-color: #380259;
+		display: inline;
+	}
+	.contrast {
+		color: #F2C809;
+	}
+
+
+</style>

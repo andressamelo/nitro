@@ -1,0 +1,132 @@
+---
+import nitroPhoto from '../assets/photo.webp';
+---
+
+<section class="steps">
+
+	<section class="content">
+		<section class="textArea">
+			<div>
+				<h2 data-aos="zoom-in">Aqui acreditamos na</h2>
+				<h2 data-aos="zoom-in" data-aos-delay="250"><span class="contrast">democratização</span> de</h2>
+				<h2 data-aos="zoom-in" data-aos-delay="500"><span class="contrast">vídeos profissionais</span></h2>				
+			</div>
+
+
+            <p class="first">Foi-se o tempo em que apenas grandes empresas podiam produzir bons materiais. Você que chegou até aqui, já sabe: <span class="contrast">quem não está ativo no mundo online hoje em dia, perde espaço no mercado, notoriedade e consequentemente vendas.</span></p>			
+            <p>Estamos aqui para produzir <span class="contrast">vídeos de alta qualidade com investimentos reduzidos.</span> Agora você pode parar de postar aqueles textões que ninguém vai ler e ganhar like com a sua voz!</p>
+            <p>Sua imagem tem poder no seu negócio, vamos utilizá-la para criar conexões.</p>
+        </section>
+		<section class="step">
+			<div class="photo" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500"><img src={nitroPhoto.src} alt="Estúdio de vídeo profissional" /></div>
+			<div class="photoContainer"></div>		
+		</section>
+	</section>
+</section>
+
+<style>
+	.steps {
+		display: flex;
+		align-items: start;
+		flex-direction: row;
+		min-height: 100vh;
+		position: relative;
+	}
+	h2 {
+		font-family: "Bebas Neue", serif;
+		font-weight: 400;
+		font-style: normal;
+		font-size: 56px;
+		margin: 0;
+        background-color: #380259;
+
+
+		@media (max-width: 768px) {
+			font-size: 40px;
+			display: inline-block;
+		}
+	}
+	.contrast {
+		color: #F2C809;
+		font-weight: 400;
+	}
+	.content {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+
+		@media only screen and (max-width: 768px) {
+			margin-top: 100px;
+		}
+
+		@media only screen and (min-width: 768px) {
+			flex-direction: row;
+		}
+	}
+	.textArea {
+		display: flex;
+		align-items: start;
+		flex-direction: column;
+		flex: 1;
+		margin-left: 120px;
+		position: relative;
+		overflow: hidden;
+
+		@media only screen and (max-width: 768px) {
+			margin: 0;
+			width: 100%;
+		}
+	}
+	.step {
+		display: flex;
+		align-items: start;
+		flex-direction: column;
+		flex: 1;
+		position: relative;
+		overflow: hidden;
+		padding: 40px 0;
+	}
+	.photo {
+		width: 100%;
+		height: 240px;
+		margin-top: -14px;
+		margin-right: -20%;
+		position: absolute;
+		z-index: 2;
+
+		@media only screen and (min-width: 768px) {
+			width: 120%;
+			height: 500px;
+			clip-path: polygon(0 0, 100% 0, 100% 100%, 10% 100%);
+			margin-top: -40px;
+		}
+	}
+
+	.photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+	.photoContainer {
+		width: 100%;
+		height: 240px;
+		background-color: #F2C809;
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 10% 100%);
+		margin-right: -20%;
+
+		@media only screen and (min-width: 768px) {
+			width: 120%;
+			height: 500px;
+		}
+	}
+	p {
+		font-size: 17px;
+		line-height: 24px;
+		margin: 0 0 16px 0;
+	}
+	.first {
+		margin-top: 36px;
+	}
+
+</style>

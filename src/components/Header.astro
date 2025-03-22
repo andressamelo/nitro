@@ -1,0 +1,188 @@
+---
+import nitroLogo from '../assets/logo.webp';
+---
+
+<div class="header-container">
+	<div class="header">
+		<img src={nitroLogo.src} alt="Nitro Produtora" class="logo" />
+		<div>
+			<button class="button-77" role="button">Entre em Contato</button>
+		</div>
+	</div>
+</div>
+
+<script>
+	const header = document.querySelector(".header-container");
+	const toggleClass = "is-sticky";
+
+	window.addEventListener("scroll", () => {
+	const currentScroll = window.pageYOffset;
+	if (currentScroll > 150) {
+		header?.classList.add(toggleClass);
+	} else {
+		header?.classList.remove(toggleClass);
+	}
+	});
+	document.querySelector(".button-77")?.addEventListener("click", () => {
+    const contactSection = document.getElementById("contact");
+		if (contactSection) {
+			const offset = 50; 
+			const topPosition = contactSection.getBoundingClientRect().top + window.scrollY - offset;
+			window.scrollTo({ top: topPosition, behavior: "smooth" });
+		}
+	});
+</script>
+
+<style>
+	.header-container {
+		border-bottom: 1px solid rgba(255,255,255,0.1);
+		background: rgb(93,41,143);
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		z-index: 9;
+
+		@media only screen and (max-width: 768px) {
+			padding: 4px 10px;
+		}
+	}
+	.header-container.is-sticky {
+		position: fixed;
+		box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(10px);
+		animation: slideDown 0.35s ease-out;
+	}
+	.header-container.is-sticky .logo{
+		width: 90px;
+	}
+	.header-container.is-sticky .button-77{
+		min-height: 44px;
+		padding: 12px 32px;
+	}
+	@keyframes slideDown {
+		from {
+			transform: translateY(-100%);
+		}
+		to {
+			transform: translateY(0);
+		}
+	}
+	.logo {
+		width: 125px;
+	}
+	.header {
+		padding: 14px 0;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		@media only screen and (min-width: 768px) {
+			width: 1200px;
+			margin: 0 auto;
+		}
+	}
+
+	.button-77 {
+		align-items: center;
+		appearance: none;
+		background-clip: padding-box;
+		background-color: initial;
+		background-image: none;
+		border-style: none;
+		box-sizing: border-box;
+		font-family: "Bebas Neue", serif;
+		font-weight: 400;
+		font-size: 16px;
+		color: #fff;
+		cursor: pointer;
+		display: inline-block;
+		flex-direction: row;
+		flex-shrink: 0;
+		justify-content: center;
+		line-height: 24px;
+		margin: 0;
+		min-height: 64px;
+		outline: none;
+		overflow: visible;
+		padding: 19px 26px;
+		pointer-events: auto;
+		position: relative;
+		text-align: center;
+		text-decoration: none;
+		text-transform: none;
+		user-select: none;
+		-webkit-user-select: none;
+		touch-action: manipulation;
+		vertical-align: middle;
+		width: auto;
+		word-break: keep-all;
+		z-index: 0;
+		letter-spacing: 1.3px;
+		text-shadow: 1px 1px 2px #E3BA07;
+	}
+
+	@media (min-width: 768px) {
+		.button-77 {
+			padding: 19px 32px;
+		}
+	}
+
+	.button-77:before,
+	.button-77:after {
+		border-radius: 80px;
+	}
+
+	.button-77:before {
+		background-color: rgba(244, 200, 14, .32);
+		content: "";
+		display: block;
+		height: 100%;
+		left: 0;
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: -2;
+	}
+
+	.button-77:after {
+		background-color: initial;
+		background-image: linear-gradient(92.83deg, #F4C90C 0, #E3BA07 100%);
+		bottom: 4px;
+		content: "";
+		display: block;
+		left: 4px;
+		overflow: hidden;
+		position: absolute;
+		right: 4px;
+		top: 4px;
+		transition: all 100ms ease-out;
+		z-index: -1;
+	}
+
+	.button-77:hover:not(:disabled):after {
+		bottom: 0;
+		left: 0;
+		right: 0;
+		top: 0;
+		transition-timing-function: ease-in;
+	}
+
+	.button-77:active:not(:disabled) {
+		color: #ccc;
+	}
+
+	.button-77:active:not(:disabled):after {
+		background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #F4C90C 0, #E3BA07 100%);
+		bottom: 4px;
+		left: 4px;
+		right: 4px;
+		top: 4px;
+	}
+
+	.button-77:disabled {
+		cursor: default;
+		opacity: .24;
+	}
+</style>

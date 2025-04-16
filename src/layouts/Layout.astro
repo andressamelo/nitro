@@ -25,7 +25,7 @@ import whatsapp from '../assets/whatsapp.png';
 	<body>
 		<div id="container">
 			<slot />
-			<a href="https://api.whatsapp.com/send?phone=5519974121947&text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20mais%20informa%C3%A7%C3%B5es!" class="btn-expand">
+			<a href="https://api.whatsapp.com/send?phone=5519974121947&text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20mais%20informa%C3%A7%C3%B5es!" class="btn-expand" target="_blank">
 				<img src={whatsapp.src} alt="Chamar no WhatsApp"/> 
 				<span class="btn-text">Chamar no Whatsapp</span>
 			</a>  
@@ -48,11 +48,7 @@ import whatsapp from '../assets/whatsapp.png';
 		font-weight: 300;
 		font-style: normal;
 	}
-	#container {
-		@media only screen and (max-width: 768px) {
-			padding: 18px;
-		}
-	}
+
 	.btn-expand {
 		position: fixed;
 		bottom: 30px;

@@ -1,61 +1,109 @@
 ---
-import ccl from '../assets/clients/ccl.png';
+import ccl from '../assets/clients/ccl.webp';
 import viva from '../assets/clients/viva.webp';
 import brena from '../assets/clients/brena.webp';
----
+import progressus from '../assets/clients/progressus.webp';
 
-<section class="container">
-	<h2>Quem já <span class="contrast">acelerou</span> com a gente</h2>
+---
+<section id="third">
+	<svg class="separator" xmlns="http://www.w3.org/2000/svg" width="100%" height="140" viewBox="0.5 0.2 176 30" preserveAspectRatio="none">
+		<g transform="scale(-1,-1) translate(-190.5,-141.58266)">
+			<path style="fill:#F4F4F9;" d="M 13.898015,111.51495 H 190.83044 v 26.19241 l -45.97036,-14.43255 -42.22858,7.48354 -45.970361,-14.96709 -31.003265,16.03617 z"/>
+		</g>
+	</svg>
+</section>
+<div class="back">
+	<section class="container">
+		<h2>Quem já acelerou com a gente</h2>
+	</section>
+
+	<div class="clients">
+		<section class="container">
+			<img src={viva.src} alt="Viva em ação" class="v" />
+			<img src={ccl.src} alt="Campinas Corte Laser" class="c" />
+			<img src={brena.src} alt="Brena Cuel" class="v" />
+			<img src={progressus.src} alt="Clínica Progressus" class="h" />
+		</section>
+	</div>	
+</div>
+<section id="third">
+	<svg class="separator" xmlns="http://www.w3.org/2000/svg" width="100%" height="140" viewBox="0.5 0.2 176 30" preserveAspectRatio="none">
+		<g transform="translate(-13.668562,-111.38266)">
+			<path style="fill:#F4F4F9;" d="M 13.898015,111.51495 H 190.83044 v 26.19241 l -45.97036,-14.43255 -42.22858,7.48354 -45.970361,-14.96709 -31.003265,16.03617 z"/>
+		</g>
+	</svg>
 </section>
 
-<div class="clients">
-	<section class="container">
-		<img src={viva.src} alt="Viva em ação" />
-		<img src={ccl.src} alt="Campinas Corte Laser" />
-		<img src={brena.src} alt="Brena Cuel" />
-	</section>
-</div>
-
 <style>
+	.back {
+		background-color: #F4F4F9;
+		margin-top: -5px;
+	}
 	.container {
 		display: flex;
     	align-items: center;
 		gap: 36px;
+		justify-content: center;
 
 		@media only screen and (min-width: 768px) {
 			width: 1200px;
 			margin: 0 auto;
 		}
 	}
-    .clients {
+	.clients {
 		display: flex;
 		flex-direction: column;
 		gap: 24px;
-		margin-top: 36px;
 		width: 100vw;
-		padding: 46px 0;
-		margin-bottom: 180px;
+		padding: 0;
 
 		@media only screen and (min-width: 768px) {
 			flex-direction: row;
+			overflow: visible;
 		}
 	}
-	.clients img {
-		max-width: 140px;
+
+	@media only screen and (max-width: 767px) {
+		.clients {
+			overflow-x: auto;
+			overflow-y: hidden;
+			-webkit-overflow-scrolling: touch;
+			scrollbar-width: none; 
+		}
+
+		.clients::-webkit-scrollbar {
+			display: none; 
+		}
+
+		.clients .container {
+			flex-wrap: nowrap;
+			display: inline-flex;
+			gap: 24px;
+			padding: 0 16px;
+			white-space: nowrap;
+		}
+	}
+	.clients .h {
+		max-width: 180px;
+	}
+	.clients .v {
+		max-width: 100px;
+	}
+	.clients .c {
+		max-width: 200px;
 	}
 
 	h2 {
 		font-family: "Bebas Neue", serif;
 		font-weight: 400;
 		font-style: normal;
-		font-size: 56px;
-		margin: 0;
-        background-color: #380259;
+		font-size: 26px;
+		margin: 0 0 24px 0;
 		display: inline;
-	}
-	.contrast {
-		color: #F2C809;
-	}
+		color: #1E1E1E;
 
-
+		@media only screen and (min-width: 768px) {
+			font-size: 36px;
+		}
+	}
 </style>

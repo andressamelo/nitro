@@ -25,11 +25,14 @@ import nitroImage from '../assets/feature.webp';
 <style>
 	.steps {
 		min-height: 100vh;
-		width: 100%;
+		width: calc(100% - 40px);
 
 		@media only screen and (min-width: 768px) {
 			width: 1200px;
 			margin: 0 auto;
+		}
+		@media only screen and (max-width: 768px) {
+			padding: 0 20px;
 		}
 	}
 	h2 {

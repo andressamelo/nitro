@@ -1,22 +1,76 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Welcome from '../components/Welcome.astro';
-import Steps from '../components/Steps.astro';
-import Photo from '../components/Photo.astro'
-import WhatWeDo from '../components/What.astro'
-import Services from '../components/Services.astro'
-import Contact from '../components/Contact.astro'
-import Clients from '../components/Clients.astro'
+import "@fontsource-variable/inter";
+import Clients from "~/components/clients.astro";
+import About from "~/components/about.astro";
+import Footer from "~/components/footer.astro";
+import Header from "~/components/header.astro";
+import Intro from "~/components/intro.astro";
+import Contact from "~/components/contact.astro";
+import Splash from "~/components/splash.astro";
+import "~/styles/index.css";
+
+const { generator, site } = Astro;
+const image = new URL("social.jpg", site);
+const description =
+  "Produtora de vídeos especializada em conteúdo para redes sociais. Criamos roteiros estratégicos, produzimos vídeos profissionais e editamos com pós-produção completa para impulsionar sua marca.";
 ---
 
-<Layout>
-	<Header />
-	<Welcome />
-	<Steps />
-	<!-- <Services /> -->
-	<!-- <WhatWeDo /> -->
-	<Photo />
-	<Clients />
-	<Contact />
-</Layout>
+<!doctype html>
+<html lang="pt-BR" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+
+    <title>Nitro Produtora</title>
+    <meta name="description" content={description} />
+		<meta name="keywords" content="produtora de vídeos, vídeos para redes sociais, marketing digital, branding, edição de vídeos, produção audiovisual, vídeos institucionais, marketing de conteúdo">
+		<meta name="author" content="Nitro Produtora">
+
+    <!-- social media -->
+		<meta property="og:title" content="Produtora de Vídeos - Potencialize Sua Marca">
+		<meta property="og:description" content="Criamos vídeos estratégicos e impactantes para fortalecer sua marca online. Roteiro, produção e edição profissional.">
+		<meta property="og:image" content="https://www.nitroag.com.br/assets/destaque.jpg">
+		<meta property="og:url" content="https://www.nitroag.com.br">
+		<meta property="og:type" content="website">
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-1F8YVQ1V2K"></script>
+
+    <!-- initialize theme -->
+    <script is:inline>
+      const themeSaved = localStorage.getItem("theme");
+
+      if (themeSaved) {
+        document.documentElement.dataset.theme = themeSaved;
+      } else {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
+      }
+
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (event) => {
+          if (!localStorage.getItem("theme")) {
+            document.documentElement.dataset.theme = event.matches
+              ? "dark"
+              : "light";
+          }
+        });
+    </script>
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <Header />
+    <Splash />
+    <div class="space-y-24 px-8 py-32">
+      <Intro />
+      <About />
+      <Clients />
+      <Contact />
+    </div>
+    <Footer />
+  </body>
+</html>

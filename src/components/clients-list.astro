@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+import brena from "~/assets/clients/brena.webp";
+import ccl from "~/assets/clients/ccl.webp";
+import progressus from "~/assets/clients/progressus.webp";
+import viva from "~/assets/clients/viva.webp";
+import larissa from "~/assets/clients/larissa.png";
+---
+
+<div class="w-full max-w-6xl space-y-2">
+  <div class="relative border border-default bg-offset px-6 pb-4 pt-8">
+    <ul class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-5">
+      <li class="flex items-center justify-center h-24 w-full">
+        <Image class="max-h-20 max-w-[120px] object-contain" src={viva} alt="Viva em Ação" />
+      </li>
+      <li class="flex items-center justify-center h-24 w-full">
+        <Image class="max-h-20 max-w-[120px] object-contain" src={progressus} alt="Progressus" />
+      </li>
+      <li class="flex items-center justify-center h-24 w-full">
+        <Image class="max-h-20 max-w-[120px] object-contain" src={ccl} alt="Campinas Corte Laser" />
+      </li>
+      <li class="flex items-center justify-center h-24 w-full">
+        <Image class="max-h-20 max-w-[120px] object-contain" src={brena} alt="Brena" />
+      </li>
+            <li class="flex items-center justify-center h-24 w-full">
+        <Image class="max-h-20 max-w-[120px] object-contain" src={larissa} alt="Larissa Tella" />
+      </li>
+    </ul>
+  </div>
+</div>

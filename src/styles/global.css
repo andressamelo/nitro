@@ -1,0 +1,28 @@
+/* TODO: consider creating <Button> and <GradientText> components */
+a,
+.btn {
+  @apply transition-colors duration-200;
+  @apply hover:text-secondary;
+  @apply focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-transparent;
+}
+
+
+.feature-text {
+  color: white;
+  background: #370359 none repeat scroll 0 0;
+  box-decoration-break: clone;
+  display: inline;
+  padding: 0 12px;
+}
+
+.detach {
+  color: #F4C80E;
+}
+
+.bg-purple {
+  background-color: #5D298F;
+}
+
+.bg-black-light {
+  background-color: #c9c9c9;
+}

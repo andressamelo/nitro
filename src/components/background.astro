@@ -1,0 +1,24 @@
+---
+import { Image } from "astro:assets";
+import video from "~/assets/video-site.gif";
+
+const widths = [450, 800, 1200];
+const sizes = "100vw";
+---
+
+
+<Image
+  class="h-full w-full object-cover absolute inset-0 opacity"
+  src={video}
+  widths={widths}
+  sizes={sizes}
+  alt="The ridged surface of the moon"
+/>
+
+
+<style>
+  .opacity {
+    opacity: 0.12;
+  }
+</style>
+

@@ -1,0 +1,82 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import ContentSection from "~/components/content-section.astro";
+import team from "~/assets/photo.webp";
+---
+
+<ContentSection title="Aqui acreditamos na democratização de vídeos profissionais" id="intro">
+  <Icon slot="eyebrow" name="logomark" class="size-32" />
+  <Fragment slot="lead">
+    Foi-se o tempo em que só grandes empresas tinham acesso a produções de qualidade. Hoje, qualquer negócio ou profissional pode se comunicar com impacto.
+    Seja para <span class="text-primary">redes sociais</span>, <span class="text-primary">vídeos institucionais</span>, <span class="text-primary">treinamentos</span> ou <span class="text-primary">vídeo aulas</span>, estamos aqui para transformar sua mensagem em imagem com qualidade.
+    Chegou a hora de trocar os textões por presença. Sua voz, sua imagem, sua história — tudo isso tem poder. Vamos usá-los para criar conexões reais.
+  </Fragment>
+
+
+
+  <div class="grid grid-cols-1 gap-2 sm:grid-cols-1">
+    <a
+      href="#"
+      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
+    >
+      <Icon name="mdi:phone" class="size-8" />
+      <span>Entre em Contato!</span>
+    </a>
+  </div>
+
+    <section id="quemsomos" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                  <Image
+                    class="rounded-xl shadow-2xl w-full"
+                    src={team}
+                    alt="Equipe da Nitro Produtora"
+                    />
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl font-bold">Nossa Missão</h2>
+                    <p class="font-semibold mt-2 text-primary">Contar histórias que conectam.</p>
+                    <p class="mt-4 leading-relaxed">
+                        A Nitro nasceu da paixão por cinema e tecnologia. Somos um time de criativos, diretores, editores e artistas dedicados a produzir conteúdo audiovisual que não apenas impressiona pela qualidade técnica, mas que também ressoa com o público, gerando emoções e resultados. Acreditamos que cada projeto é uma oportunidade única de contar uma nova história.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a
+      id="whatsapp-button"
+      href="https://wa.me/5519988047681?text=Ol%C3%A1%2C%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%21"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-opacity duration-500 opacity-0 pointer-events-none z-50 flex items-center justify-center"
+      aria-label="Entrar em contato via WhatsApp"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M20.52 3.48A11.89 11.89 0 0 0 12 0C5.37 0 .01 5.37.01 12c0 2.11.55 4.18 1.6 6.01L0 24l6.25-1.64A11.95 11.95 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.19-1.25-6.18-3.48-8.52zM12 22.02c-1.8 0-3.55-.48-5.09-1.39l-.36-.21-3.72.98.99-3.63-.24-.37A9.92 9.92 0 0 1 2.01 12c0-5.51 4.48-9.99 9.99-9.99 2.66 0 5.17 1.04 7.06 2.93a9.92 9.92 0 0 1 2.94 7.06c0 5.51-4.48 10-10 10zm5.48-7.63c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.47-2.4-1.5-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.21-.24-.58-.5-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.11 3.2 5.1 4.48.71.31 1.26.5 1.69.64.71.22 1.36.19 1.87.12.57-.08 1.77-.72 2.03-1.41.25-.7.25-1.29.17-1.41-.08-.13-.27-.2-.57-.35z"
+        />
+      </svg>
+    </a>
+</ContentSection>
+
+<script>
+  const button = document.getElementById("whatsapp-button");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      button?.classList.remove("opacity-0", "pointer-events-none");
+      button?.classList.add("opacity-100");
+    } else {
+      button?.classList.remove("opacity-100");
+      button?.classList.add("opacity-0", "pointer-events-none");
+    }
+  });
+</script>

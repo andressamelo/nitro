@@ -1,0 +1,33 @@
+---
+import Background from "./background.astro";
+
+const widths = [450, 800];
+const sizes = "(min-width: 640px) 42vw, 67vw";
+---
+
+<section class="relative h-full bg-purple-900">
+  <Background />
+
+  <div id="splash-bg-fallback" class="absolute inset-0 hidden opacity-40">
+  </div>
+  <div class="relative grid h-full place-items-center text-center">
+    <h2>
+      <div
+        class="feature-text font-extrabold tracking-tighter text-6xl md:text-6xl"
+      >
+      VÍDEOS QUE <span class="detach">POTENCIALIZAM</span>
+        <br />MARCAS E PESSOAS
+      </div>
+    </h2>
+    
+  </div>
+</section>
+
+<noscript>
+  <style>
+    #splash-bg-fallback {
+      display: block;
+    }
+  </style>
+</noscript>
+

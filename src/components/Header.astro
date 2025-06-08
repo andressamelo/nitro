@@ -1,188 +1,138 @@
 ---
-import nitroLogo from '../assets/logo.webp';
+import { Icon } from "astro-icon/components";
+import ThemeSwitcher from "~/components/theme-switcher.astro";
+import type { NavItem } from "~/types";
+
+const navItems: Array<NavItem> = [
+  { title: "O Que Podemos Criar Juntos", url: "#sobre" },
+  { title: "Clientes", url: "#clients" },
+  { title: "Entre em Contato!", url: "#contato" },
+];
 ---
 
-<div class="header-container">
-	<div class="header">
-		<img src={nitroLogo.src} alt="Nitro Produtora" class="logo" />
-		<div>
-			<button class="button-77" role="button">Entre em Contato</button>
-		</div>
-	</div>
-</div>
+<header
+  id="page-header"
+  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white"
+>
+  <a class="flex items-center gap-2 hover:!text-default" href="#">
+    <h1 class="sr-only">Nitro</h1>
+    <Icon name="logomark" class="size-8" />
+    <Icon name="wordmark" class="size-16 hidden h-8 sm:block" />
+  </a>
+  <div>
+    <div class="flex items-center gap-6">
+      <nav class="hidden sm:block">
+        <ul class="flex items-center gap-6">
+          {
+            navItems.map(({ title, url }) => (
+              <li>
+                <a class="text-sm" href={url}>
+                  {title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <button
+        id="open-nav-button"
+        type="button"
+        class="btn sm:hidden"
+        aria-label="Navigation"
+      >
+        <Icon name="mdi:menu" class="size-8" />
+      </button>
+      <ThemeSwitcher />
+    </div>
+    <div id="menu-modal" class="modal hidden" aria-hidden="true">
+      <div class="fixed inset-0 bg-default px-8 py-4 text-default">
+        <div class="space-y-4" role="dialog" aria-modal="true">
+          <header class="text-right">
+            <button
+              id="close-nav-button"
+              type="button"
+              class="btn"
+              aria-label="Close navigation"
+            >
+              <Icon name="mdi:close" class="size-8" />
+            </button>
+          </header>
+          <div class="flex justify-center">
+            <Icon name="logomark" class="size-16" />
+          </div>
+          <nav>
+            <ul class="flex flex-col">
+              {
+                navItems.map(({ title, url }) => (
+                  <li>
+                    <a class="block py-4 text-center text-xl" href={url}>
+                      {title}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
 <script>
-	const header = document.querySelector(".header-container");
-	const toggleClass = "is-sticky";
+  import MicroModal from "micromodal";
+  import invariant from "tiny-invariant";
 
-	window.addEventListener("scroll", () => {
-	const currentScroll = window.pageYOffset;
-	if (currentScroll > 150) {
-		header?.classList.add(toggleClass);
-	} else {
-		header?.classList.remove(toggleClass);
-	}
-	});
-	document.querySelector(".button-77")?.addEventListener("click", () => {
-    const contactSection = document.getElementById("contact");
-		if (contactSection) {
-			const offset = 50; 
-			const topPosition = contactSection.getBoundingClientRect().top + window.scrollY - offset;
-			window.scrollTo({ top: topPosition, behavior: "smooth" });
-		}
-	});
+  const menuModalId = "menu-modal";
+
+  const header = document.querySelector("#page-header") as HTMLElement;
+  const page = document.documentElement;
+  const menu = document.querySelector(`#${menuModalId} ul`);
+  const openNavButton = document.querySelector("#open-nav-button");
+  const closeNavButton = document.querySelector("#close-nav-button");
+
+  invariant(header, "header should not be null");
+  invariant(menu, "menu should not be null");
+  invariant(openNavButton, "openNavButton should not be null");
+  invariant(closeNavButton, "closeNavButton should not be null");
+
+  const openMenu = () => {
+    MicroModal.show(menuModalId, { disableScroll: true });
+  };
+
+  const closeMenu = () => {
+    MicroModal.close(menuModalId);
+  };
+
+  openNavButton.addEventListener("click", openMenu);
+  closeNavButton.addEventListener("click", closeMenu);
+
+  document.addEventListener("scroll", () => {
+    const d = page.clientHeight - page.scrollTop - header.offsetHeight;
+    header.classList.toggle("fixed-header", d < 0);
+  });
+
+  menu.addEventListener("click", (event) => {
+    if ((event.target as HTMLElement).tagName === "A") {
+      closeMenu();
+    }
+  });
 </script>
 
+<noscript>
+  <style>
+    #open-nav-button {
+      display: none;
+    }
+  </style>
+</noscript>
+
 <style>
-	.header-container {
-		border-bottom: 1px solid rgba(255,255,255,0.1);
-		background: rgb(93,41,143);
-		position: absolute;
-		top: 0;
-		right: 0;
-		left: 0;
-		z-index: 9;
-
-		@media only screen and (max-width: 768px) {
-			padding: 4px 10px;
-		}
-	}
-	.header-container.is-sticky {
-		position: fixed;
-		box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
-		backdrop-filter: blur(10px);
-		animation: slideDown 0.35s ease-out;
-	}
-	.header-container.is-sticky .logo{
-		width: 90px;
-	}
-	.header-container.is-sticky .button-77{
-		min-height: 44px;
-		padding: 12px 32px;
-	}
-	@keyframes slideDown {
-		from {
-			transform: translateY(-100%);
-		}
-		to {
-			transform: translateY(0);
-		}
-	}
-	.logo {
-		width: 125px;
-	}
-	.header {
-		padding: 14px 0;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-
-		@media only screen and (min-width: 768px) {
-			width: 1200px;
-			margin: 0 auto;
-		}
-	}
-
-	.button-77 {
-		align-items: center;
-		appearance: none;
-		background-clip: padding-box;
-		background-color: initial;
-		background-image: none;
-		border-style: none;
-		box-sizing: border-box;
-		font-family: "Bebas Neue", serif;
-		font-weight: 400;
-		font-size: 16px;
-		color: #fff;
-		cursor: pointer;
-		display: inline-block;
-		flex-direction: row;
-		flex-shrink: 0;
-		justify-content: center;
-		line-height: 24px;
-		margin: 0;
-		min-height: 64px;
-		outline: none;
-		overflow: visible;
-		padding: 19px 26px;
-		pointer-events: auto;
-		position: relative;
-		text-align: center;
-		text-decoration: none;
-		text-transform: none;
-		user-select: none;
-		-webkit-user-select: none;
-		touch-action: manipulation;
-		vertical-align: middle;
-		width: auto;
-		word-break: keep-all;
-		z-index: 0;
-		letter-spacing: 1.3px;
-		text-shadow: 1px 1px 2px #E3BA07;
-	}
-
-	@media (min-width: 768px) {
-		.button-77 {
-			padding: 19px 32px;
-		}
-	}
-
-	.button-77:before,
-	.button-77:after {
-		border-radius: 80px;
-	}
-
-	.button-77:before {
-		background-color: rgba(244, 200, 14, .32);
-		content: "";
-		display: block;
-		height: 100%;
-		left: 0;
-		overflow: hidden;
-		position: absolute;
-		top: 0;
-		width: 100%;
-		z-index: -2;
-	}
-
-	.button-77:after {
-		background-color: initial;
-		background-image: linear-gradient(92.83deg, #F4C90C 0, #E3BA07 100%);
-		bottom: 4px;
-		content: "";
-		display: block;
-		left: 4px;
-		overflow: hidden;
-		position: absolute;
-		right: 4px;
-		top: 4px;
-		transition: all 100ms ease-out;
-		z-index: -1;
-	}
-
-	.button-77:hover:not(:disabled):after {
-		bottom: 0;
-		left: 0;
-		right: 0;
-		top: 0;
-		transition-timing-function: ease-in;
-	}
-
-	.button-77:active:not(:disabled) {
-		color: #ccc;
-	}
-
-	.button-77:active:not(:disabled):after {
-		background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #F4C90C 0, #E3BA07 100%);
-		bottom: 4px;
-		left: 4px;
-		right: 4px;
-		top: 4px;
-	}
-
-	.button-77:disabled {
-		cursor: default;
-		opacity: .24;
-	}
+  .fixed-header {
+    @apply fixed bottom-auto top-0;
+    @apply border-default bg-purple-800 text-white;
+  }
+  .modal.is-open {
+    @apply block;
+  }
 </style>

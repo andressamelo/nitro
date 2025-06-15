@@ -5,18 +5,15 @@ import type { FooterLink } from "../types";
 const links: Array<FooterLink> = [
   {
     url: "#",
-    description: "Acompanhe nosso LinkedIn",
-    icon: "fa-brands:linkedin",
-  },
-  {
-    url: "#",
     description: "Veja nosso trabalho no youtube",
     icon: "fa-brands:youtube",
+    target: "_blank",
   },
   {
-    url: "#",
+    url: "https://www.instagram.com/nitroprodutora/",
     description: "Acompanhe nosso Instagram",
     icon: "fa-brands:instagram",
+    target: "_blank",
   },
 ];
 ---
@@ -30,6 +27,7 @@ const links: Array<FooterLink> = [
             <a
               class="flex size-10 items-center justify-center p-2"
               href={link.url}
+              target={link.target}
             >
               <span class="sr-only">{link.description}</span>
               <Icon class="size-full" name={link.icon} />

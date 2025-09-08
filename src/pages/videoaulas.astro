@@ -1,0 +1,176 @@
+---
+import { Image } from "astro:assets";
+import logo from "../icons/wordmark.svg";
+import contact from "../assets/contact.png";
+
+---
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravação de Videoaulas Profissionais | Nitro Produtora</title>
+    <meta name="description" content="Transforme seu conhecimento em um curso online de sucesso. Produzimos videoaulas com qualidade de cinema para educadores, especialistas e empresas.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero-background {
+            background-color: #581c87;
+            background-image: linear-gradient(rgba(88, 28, 135, 0.85), rgba(88, 28, 135, 0.95)), url('https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .custom-purple-600 { background-color: #581c87; }
+        .focus-ring-purple { --tw-ring-color: #581c87; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <header class="hero-background text-white">
+        <div class="container mx-auto px-6 py-20 text-center">
+            <div class="mb-8">
+                 <Image src={logo} alt="Logo da Nitro Produtora" class="mx-auto h-12">
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Transforme seu conhecimento em um curso online de sucesso.</h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                Produzimos videoaulas com qualidade de cinema para educadores, especialistas e empresas que desejam engajar e vender mais.
+            </p>
+            <a href="#contato" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+                Quero um Orçamento Gratuito
+            </a>
+        </div>
+    </header>
+
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Seu conteúdo é incrível, mas seus vídeos não passam a mesma impressão?</h2>
+            <p class="max-w-3xl mx-auto text-gray-600 mb-12">
+                Iluminação ruim, som abafado e edições confusas podem destruir a percepção de valor do seu curso. Nós resolvemos isso para você.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="space-y-4">
+                    <div class="bg-red-100 p-4 rounded-lg inline-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">Gravações Caseiras</h3>
+                    <p class="text-gray-600">Vídeos que parecem amadores e não retêm a atenção dos alunos.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-red-100 p-4 rounded-lg inline-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m-2 0l2 2m-2-2l-2 2m2-2l-2-2" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">Áudio Ruim</h3>
+                    <p class="text-gray-600">Som com ruídos e ecos que dificultam o aprendizado e cansam o espectador.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-red-100 p-4 rounded-lg inline-block">
+                       <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19M4.879 4.879L9.757 9.757M14.121 9.757L9.757 14.121m9.243-4.364L14.121 5M4.879 19L9.757 14.121" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">Edição Complicada</h3>
+                    <p class="text-gray-600">Horas perdidas ou um resultado final que não agrada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Nosso Processo Simplificado para Criar seu Curso</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-left relative">
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200" style="transform: translateY(-50%); z-index: 0;"></div>
+                <div class="bg-white p-6 rounded-lg shadow-lg z-10">
+                    <div class="flex items-center mb-4"><div class="custom-purple-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-xl mr-4">1</div><h3 class="text-xl font-bold text-gray-800">Planejamento</h3></div><p class="text-gray-600">Entendemos seus objetivos, o perfil dos seus alunos e definimos o roteiro e a estrutura das aulas.</p></div>
+                <div class="bg-white p-6 rounded-lg shadow-lg z-10">
+                    <div class="flex items-center mb-4"><div class="custom-purple-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-xl mr-4">2</div><h3 class="text-xl font-bold text-gray-800">Gravação</h3></div><p class="text-gray-600">Cuidamos de tudo: estúdio, iluminação, câmeras e som. Você só se preocupa com o conteúdo.</p></div>
+                <div class="bg-white p-6 rounded-lg shadow-lg z-10">
+                    <div class="flex items-center mb-4"><div class="custom-purple-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-xl mr-4">3</div><h3 class="text-xl font-bold text-gray-800">Pós-Produção</h3></div><p class="text-gray-600">Editamos, adicionamos sua identidade visual, tratamos as cores e o áudio para um resultado impecável.</p></div>
+                <div class="bg-white p-6 rounded-lg shadow-lg z-10">
+                    <div class="flex items-center mb-4"><div class="custom-purple-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-xl mr-4">4</div><h3 class="text-xl font-bold text-gray-800">Entrega</h3></div><p class="text-gray-600">Entregamos os arquivos prontos para você subir na sua plataforma e começar a vender.</p></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Acelere seu Lançamento com Nossos Diferenciais</h2>
+            <p class="max-w-3xl mx-auto text-gray-600 mb-12">
+                Não se trata apenas de apertar o 'gravar'. É sobre criar uma experiência de aprendizado que encanta e converte.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
+                <div class="space-y-4">
+                    <div class="bg-purple-100 p-4 rounded-lg inline-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" style="color:#581c87" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">Qualidade Cinematográfica</h3>
+                    <p class="text-gray-600">Utilizamos câmeras 4K, iluminação profissional e captação de áudio cristalina para que seu curso tenha a aparência e o som de uma grande produção. Isso aumenta a percepção de valor e a confiança dos seus alunos.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-purple-100 p-4 rounded-lg inline-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" style="color:#581c87" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">Processo Ágil e Focado (Nitro)</h3>
+                    <p class="text-gray-600">Nosso nome não é por acaso. Criamos um processo enxuto desde o roteiro até a entrega final, garantindo que seu projeto seja concluído com máxima qualidade no menor tempo possível, sem stress e sem atrasos.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-purple-100 p-4 rounded-lg inline-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" style="color:#581c87" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">Direção e Roteiro Estratégicos</h3>
+                    <p class="text-gray-600">Mais do que operadores de câmera, somos seus parceiros. Ajudamos a lapidar seu roteiro e dirigimos a gravação para garantir que seu conteúdo seja claro, dinâmico e que prenda a atenção do início ao fim.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12"><h2 class="text-3xl md:text-4xl font-bold text-gray-800">Veja a Qualidade do Nosso Trabalho</h2><p class="max-w-3xl mx-auto text-gray-600 mt-4">Aperte o play e veja na prática como a qualidade da imagem, som e edição fazem toda a diferença na experiência do seu aluno.</p></div>
+            <div class="max-w-4xl mx-auto aspect-video rounded-lg overflow-hidden shadow-2xl bg-black">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=73DDqFAU-aX20LdN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-xl overflow-hidden">
+                <div class="w-full md:w-1/2 p-8 md:p-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Pronto para Lançar seu Curso Online?</h2>
+                    <p class="text-gray-600 mb-8">Vamos conversar! Preencha o formulário e nossa equipe entrará em contato para entender seu projeto e enviar uma proposta sem compromisso.</p>
+                    <form action="#" method="POST">
+                        <div class="mb-4"><label for="name" class="block text-gray-700 font-semibold mb-2">Nome</label><input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus-ring-purple" required></div>
+                        <div class="mb-4"><label for="email" class="block text-gray-700 font-semibold mb-2">Email</label><input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus-ring-purple" required></div>
+                        <div class="mb-6"><label for="message" class="block text-gray-700 font-semibold mb-2">Breve descrição do seu curso</label><textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus-ring-purple"></textarea></div>
+                        <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300">Receber meu Orçamento Agora</button>
+                    </form>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <Image src={contact} alt="Atendente sorrindo" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Nitro Produtora. Todos os direitos reservados.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Facebook</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Instagram</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

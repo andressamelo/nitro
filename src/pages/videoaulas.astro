@@ -132,26 +132,56 @@ import contact from "../assets/contact.png";
         </div>
     </section>
 
-    <section class="py-16 md:py-24 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12"><h2 class="text-3xl md:text-4xl font-bold text-gray-800">Veja a Qualidade do Nosso Trabalho</h2><p class="max-w-3xl mx-auto text-gray-600 mt-4">Aperte o play e veja na prática como a qualidade da imagem, som e edição fazem toda a diferença na experiência do seu aluno.</p></div>
-            <div class="max-w-4xl mx-auto aspect-video rounded-lg overflow-hidden shadow-2xl bg-black">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=73DDqFAU-aX20LdN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full"></iframe>
-            </div>
-        </div>
-    </section>
-
     <section id="contato" class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-xl overflow-hidden">
                 <div class="w-full md:w-1/2 p-8 md:p-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Pronto para Lançar seu Curso Online?</h2>
                     <p class="text-gray-600 mb-8">Vamos conversar! Preencha o formulário e nossa equipe entrará em contato para entender seu projeto e enviar uma proposta sem compromisso.</p>
-                    <form action="#" method="POST">
+                    <form id="contact-form" action="/formmail.php" method="POST">
+                        <input type="hidden" name="website" id="website" style="display:none" aria-hidden="true">
                         <div class="mb-4"><label for="name" class="block text-gray-700 font-semibold mb-2">Nome</label><input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus-ring-purple" required></div>
                         <div class="mb-4"><label for="email" class="block text-gray-700 font-semibold mb-2">Email</label><input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus-ring-purple" required></div>
                         <div class="mb-6"><label for="message" class="block text-gray-700 font-semibold mb-2">Breve descrição do seu curso</label><textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus-ring-purple"></textarea></div>
-                        <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300">Receber meu Orçamento Agora</button>
+                        <button id="contact-submit" type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300">Receber meu Orçamento Agora</button>
+                        <div id="contact-feedback" class="mt-4 text-sm"></div>
+                    </form>
+
+                    <script>
+                    (function(){
+                        const form = document.getElementById('contact-form');
+                        const feedback = document.getElementById('contact-feedback');
+                        const submitBtn = document.getElementById('contact-submit');
+
+                        form.addEventListener('submit', async function(e){
+                            e.preventDefault();
+                            feedback.textContent = '';
+                            submitBtn.disabled = true;
+                            const formData = new FormData(form);
+
+                            try {
+                                const res = await fetch(form.action, {
+                                    method: 'POST',
+                                    body: formData,
+                                });
+                                const data = await res.json();
+                                if (res.ok && data.ok) {
+                                    feedback.style.color = 'green';
+                                    feedback.textContent = data.message || 'Mensagem enviada com sucesso. Em breve entraremos em contato!';
+                                    form.reset();
+                                } else {
+                                    feedback.style.color = 'red';
+                                    feedback.textContent = data.message || 'Erro ao enviar. Tente novamente.';
+                                }
+                            } catch (err) {
+                                feedback.style.color = 'red';
+                                feedback.textContent = 'Erro de rede. Tente novamente mais tarde.';
+                            } finally {
+                                submitBtn.disabled = false;
+                            }
+                        });
+                    })();
+                    </script>
                     </form>
                 </div>
                 <div class="w-full md:w-1/2">

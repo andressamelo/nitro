@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../icons/wordmark.svg";
-import contact from "../assets/contact.png";
+import contact from "../assets/contact.webp";
 
 ---
 
@@ -46,7 +46,7 @@ import contact from "../assets/contact.png";
                 Produzimos videoaulas com qualidade de cinema para educadores, especialistas e empresas que desejam engajar e vender mais.
             </p>
             <a href="#contato" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
-                Quero um Orçamento Gratuito
+                Quero um Orçamento
             </a>
         </div>
     </header>
@@ -132,6 +132,57 @@ import contact from "../assets/contact.png";
         </div>
     </section>
 
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Veja a Qualidade Nitro em Ação</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto mt-4">
+                    Aperte o play e descubra os bastidores da criação de uma videoaula profissional que realmente encanta e engaja os alunos.
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                <div class="w-full lg:w-2/3">
+                    <div class="relative w-full shadow-2xl rounded-lg overflow-hidden" style="padding-top:56.25%;"> <iframe 
+    class="absolute top-0 left-0 w-full h-full" 
+    src="https://www.youtube.com/embed/IopFT1OyXFs?si=Z13mjA136vgdZXof&controls=1&rel=0" 
+    title="Demonstração Nitro Produtora" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen>
+</iframe>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/3">
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">O Que Você Vai Ver no Vídeo:</h3>
+                        
+                        <ul class="space-y-4 text-gray-600 mb-8">
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                <span><strong>Equipamentos de ponta:</strong> Câmeras, lentes e microfones que usamos para garantir um visual de cinema.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                <span><strong>Dicas práticas para seu melhor desempenho na gravação:</strong> O segredo para criar uma atmosfera profissional em qualquer ambiente.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                <span><strong>O resultado final:</strong> A prova de que seu conteúdo merece uma produção impecável.</span>
+                            </li>
+                        </ul>
+
+                        <a href="#contato" class="w-full text-center block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105">
+                            Grave seu curso com a Nitro!
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contato" class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-xl overflow-hidden">
@@ -200,6 +251,43 @@ import contact from "../assets/contact.png";
             </div>
         </div>
     </footer>
+</body>
 
+        <!-- WhatsApp flutuante (copiado de Intro.astro) -->
+        <a
+            id="whatsapp-button"
+            href="https://wa.me/5519974121947?text=Ol%C3%A1%2C%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%21"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-opacity duration-500 opacity-0 pointer-events-none z-50 flex items-center justify-center"
+            aria-label="Entrar em contato via WhatsApp"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    d="M20.52 3.48A11.89 11.89 0 0 0 12 0C5.37 0 .01 5.37.01 12c0 2.11.55 4.18 1.6 6.01L0 24l6.25-1.64A11.95 11.95 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.19-1.25-6.18-3.48-8.52zM12 22.02c-1.8 0-3.55-.48-5.09-1.39l-.36-.21-3.72.98.99-3.63-.24-.37A9.92 9.92 0 0 1 2.01 12c0-5.51 4.48-9.99 9.99-9.99 2.66 0 5.17 1.04 7.06 2.93a9.92 9.92 0 0 1 2.94 7.06c0 5.51-4.48 10-10 10zm5.48-7.63c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.47-2.4-1.5-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.21-.24-.58-.5-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.11 3.2 5.1 4.48.71.31 1.26.5 1.69.64.71.22 1.36.19 1.87.12.57-.08 1.77-.72 2.03-1.41.25-.7.25-1.29.17-1.41-.08-.13-.27-.2-.57-.35z"
+                />
+            </svg>
+        </a>
+
+        <script>
+            const button = document.getElementById("whatsapp-button");
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 100) {
+                    button?.classList.remove("opacity-0", "pointer-events-none");
+                    button?.classList.add("opacity-100");
+                } else {
+                    button?.classList.remove("opacity-100");
+                    button?.classList.add("opacity-0", "pointer-events-none");
+                }
+            });
+        </script>
+
+</html>
 </body>
 </html>

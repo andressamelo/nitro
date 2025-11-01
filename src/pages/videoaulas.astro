@@ -221,6 +221,25 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
                                 <div id="contact-feedback" class="mt-4 text-sm"></div>
                             </form>
 
+                            <!-- Success Modal -->
+                            <div id="success-modal" class="fixed inset-0 z-50 hidden">
+                                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                                <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-8 max-w-md w-full mx-4 shadow-2xl">
+                                    <div class="text-center">
+                                        <div class="mb-4">
+                                            <svg class="mx-auto h-12 w-12 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-gray-900 mb-4">Mensagem Enviada!</h3>
+                                        <p class="text-gray-600">Mensagem enviada com sucesso. Em breve entraremos em contato!</p>
+                                        <button id="close-modal" class="mt-6 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                                            Fechar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
                             <script>
                                 (function(){
                                     const form = document.getElementById('contact-form');
@@ -325,8 +344,9 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
                                             });
                                             const data = await res.json();
                                             if (res.status === 200) {
-                                                feedback.style.color = 'green';
-                                                feedback.textContent = 'Mensagem enviada com sucesso. Em breve entraremos em contato!';
+                                                // Show success modal and start timer
+                                                modal.classList.remove('hidden');
+                                                startModalTimer();
                                                 form.reset();
                                                 // Reset validation styles
                                                 [emailInput, phoneInput].forEach(input => {
@@ -341,6 +361,41 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
                                             feedback.textContent = 'Erro de rede. Tente novamente mais tarde.';
                                         } finally {
                                             submitBtn.disabled = false;
+                                        }
+                                    });
+                                    // Modal close handling
+                                    const modal = document.getElementById('success-modal');
+                                    const closeModalBtn = document.getElementById('close-modal');
+                                    let modalTimer;
+
+                                    function closeModal() {
+                                        modal.classList.add('hidden');
+                                        if (modalTimer) {
+                                            clearTimeout(modalTimer);
+                                        }
+                                    }
+
+                                    function startModalTimer() {
+                                        if (modalTimer) {
+                                            clearTimeout(modalTimer);
+                                        }
+                                        // 5 minutos = 300000 milissegundos
+                                        modalTimer = setTimeout(closeModal, 300000);
+                                    }
+                                    
+                                    closeModalBtn.addEventListener('click', closeModal);
+
+                                    // Close modal when clicking outside
+                                    modal.addEventListener('click', (e) => {
+                                        if (e.target === modal) {
+                                            closeModal();
+                                        }
+                                    });
+
+                                    // Close modal with Escape key
+                                    document.addEventListener('keydown', (e) => {
+                                        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                                            closeModal();
                                         }
                                     });
                                 })();

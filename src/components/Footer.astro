@@ -18,14 +18,14 @@ const links: Array<FooterLink> = [
 ];
 ---
 
-<footer class="relative items-center justify-center bg-text border-t-2 border-x-stone-800">
+<footer class="relative items-center justify-center bg-[#581c87] text-white border-t-2 border-x-stone-800">
   <div class="flex items-center justify-center">
     <ul class="relative grid grid-cols-2 gap-4 sm:grid-cols-3 mt-8">
       {
         links.map((link) => (
           <li>
             <a
-              class="flex size-10 items-center justify-center p-2"
+              class="flex size-10 items-center justify-center p-2 text-white"
               href={link.url}
               target={link.target}
             >
@@ -40,7 +40,7 @@ const links: Array<FooterLink> = [
 
 
   <div class="container mx-auto py-6 text-center">
-      <p class="text-xs">&copy; 2025 Nitro Produtora. Todos os direitos reservados.</p>
-      <p class="text-xs">Criando vídeos com paixão e performance.</p>
+      <p class="text-xs text-white">&copy; 2025 Nitro Produtora. Todos os direitos reservados.</p>
+      <p class="text-xs text-white">Criando vídeos com paixão e performance.</p>
   </div>
 </footer>

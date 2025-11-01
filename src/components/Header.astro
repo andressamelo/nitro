@@ -48,7 +48,7 @@ const navItems: Array<NavItem> = customNavItems ?? defaultNavItems;
       <ThemeSwitcher />
     </div>
     <div id="menu-modal" class="modal hidden" aria-hidden="true">
-      <div class={`fixed inset-0 ${modalBgClass ?? "bg-default text-default"} px-8 py-4`}>
+      <div class={"fixed inset-0 " + (modalBgClass ?? "bg-default text-default") + " px-8 py-4"}>
         <div class="space-y-4" role="dialog" aria-modal="true">
           <header class="text-right">
             <button

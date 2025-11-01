@@ -1,3 +1,4 @@
+---
 import { Icon } from "astro-icon/components";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
 import type { NavItem } from "../types";
@@ -12,6 +13,7 @@ const defaultNavItems: Array<NavItem> = [
 // accept optional props: navItems (array) and modalBgClass (string)
 const { navItems: customNavItems, modalBgClass } = Astro.props;
 const navItems: Array<NavItem> = customNavItems ?? defaultNavItems;
+---
 
 <header
   id="page-header"

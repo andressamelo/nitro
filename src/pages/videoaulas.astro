@@ -62,13 +62,29 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
             #page-header { background-color: #581c87 !important; border-bottom-color: transparent !important; }
             /* ensure text/icons remain visible */
             #page-header a, #page-header .btn, #page-header svg { color: white !important; }
+            /* Navigation items and logo transition */
+            #page-header nav,
+            #page-header > a:first-child {
+                transition: opacity 0.3s ease-in-out;
+            }
+            #page-header nav.opacity-0,
+            #page-header > a.opacity-0 {
+                opacity: 0;
+            }
+            #page-header nav.opacity-100,
+            #page-header > a.opacity-100 {
+                opacity: 1;
+            }
+            #page-header nav.pointer-events-none,
+            #page-header > a.pointer-events-none {
+                pointer-events: none;
+            }
         </style>
     </head>
     <body class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white">
                 <Header navItems={[
                     { title: 'Início', url: '#top' },
-                    { title: 'Processo', url: '#processo' },
-                    { title: 'Demonstração', url: '#demonstracao' },
+                    { title: 'Nossa Qualidade', url: '#qualidade' },
                     { title: 'Contato', url: '#contato' },
                 ]} modalBgClass="bg-[#581c87] text-white" />
 
@@ -139,7 +155,7 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
                 </div>
             </section>
 
-            <section class="py-16 md:py-24 bg-gray-50">
+            <section class="py-16 md:py-24 bg-gray-50" id="qualidade">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-12">
                         <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Veja a Qualidade Nitro em Ação</h2>
@@ -242,13 +258,42 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
 
         <script>
             const button = document.getElementById("whatsapp-button");
+            const header = document.querySelector("#page-header");
+            const demonstracaoSection = document.querySelector("#demonstracao");
+            const navItems = header?.querySelector("nav");
+            const logo = header?.querySelector("a:first-child");
+
+            // Initially hide nav items and logo
+            [navItems, logo].forEach(element => {
+                if (element) {
+                    element.classList.add("opacity-0", "pointer-events-none");
+                }
+            });
+
             window.addEventListener("scroll", () => {
+                // WhatsApp button visibility
                 if (window.scrollY > 100) {
                     button?.classList.remove("opacity-0", "pointer-events-none");
                     button?.classList.add("opacity-100");
                 } else {
                     button?.classList.remove("opacity-100");
                     button?.classList.add("opacity-0", "pointer-events-none");
+                }
+
+                // Nav items and logo visibility based on demonstracao section
+                if (demonstracaoSection && navItems && logo) {
+                    const rect = demonstracaoSection.getBoundingClientRect();
+                    if (rect.top <= 0) {
+                        [navItems, logo].forEach(element => {
+                            element.classList.remove("opacity-0", "pointer-events-none");
+                            element.classList.add("opacity-100");
+                        });
+                    } else {
+                        [navItems, logo].forEach(element => {
+                            element.classList.remove("opacity-100");
+                            element.classList.add("opacity-0", "pointer-events-none");
+                        });
+                    }
                 }
             });
         </script>

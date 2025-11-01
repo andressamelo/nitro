@@ -49,7 +49,7 @@ const navItems: Array<NavItem> = customNavItems ?? defaultNavItems;
       </button>
       <ThemeSwitcher />
     </div>
-    <div id="menu-modal" class="modal hidden" aria-hidden="true">
+    <div id="menu-modal" class={"modal hidden " + (modalBgClass ? "has-custom-bg" : "")} aria-hidden="true" data-modal-bg={modalBgClass ?? ""}>
       <div class={"fixed inset-0 " + (modalBgClass ?? "bg-default text-default") + " px-8 py-4"}>
         <div class="space-y-4" role="dialog" aria-modal="true">
           <header class="text-right">
@@ -139,5 +139,13 @@ const navItems: Array<NavItem> = customNavItems ?? defaultNavItems;
   }
   .modal.is-open {
     @apply block;
+  }
+</style>
+
+<style is:global>
+  /* Defensive rule: when Header passes a custom modal background, ensure modal overlay hides transparency */
+  .modal.has-custom-bg[data-modal-bg] {
+    background-color: inherit !important;
+    color: inherit !important;
   }
 </style>

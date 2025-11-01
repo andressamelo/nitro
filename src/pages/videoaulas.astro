@@ -264,7 +264,7 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
                                                 e.target.classList.remove('border-red-500');
                                                 e.target.classList.add('border-green-500');
                                             } else {
-                                                e.target.setCustomValidity('Por favor, insira um telefone no formato (xx) xxxxx-xxxx');
+                                                e.target.setCustomValidity('Por favor, insira um telefone no formato (xx) xxxxx-xxxx ou (xx) xxxx-xxxx');
                                                 e.target.classList.remove('border-green-500');
                                                 e.target.classList.add('border-red-500');
                                             }
@@ -297,12 +297,18 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
                                         if (!isValidEmail(email)) {
                                             feedback.style.color = 'red';
                                             feedback.textContent = 'Por favor, insira um email válido';
+                                            emailInput.focus();
                                             return;
                                         }
                                         
-                                        if (!isValidPhone(phone)) {
+                                        // Remove any remaining validation messages
+                                        phoneInput.setCustomValidity('');
+                                        
+                                        // Final validation before submit
+                                        if (!phone.match(/^\(\d{2}\)\s\d{4,5}-\d{4}$/)) {
                                             feedback.style.color = 'red';
-                                            feedback.textContent = 'Por favor, insira um telefone no formato (xx) xxxxx-xxxx';
+                                            feedback.textContent = 'Por favor, insira um telefone no formato (xx) xxxxx-xxxx ou (xx) xxxx-xxxx';
+                                            phoneInput.focus();
                                             return;
                                         }
 

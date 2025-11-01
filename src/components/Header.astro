@@ -1,14 +1,17 @@
----
 import { Icon } from "astro-icon/components";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
 import type { NavItem } from "../types";
 
-const navItems: Array<NavItem> = [
+// default nav items (used when no custom navItems passed via props)
+const defaultNavItems: Array<NavItem> = [
   { title: "O Que Podemos Criar Juntos", url: "#sobre" },
   { title: "Clientes", url: "#clients" },
   { title: "Entre em Contato!", url: "#contato" },
 ];
----
+
+// accept optional props: navItems (array) and modalBgClass (string)
+const { navItems: customNavItems, modalBgClass } = Astro.props;
+const navItems: Array<NavItem> = customNavItems ?? defaultNavItems;
 
 <header
   id="page-header"
@@ -19,7 +22,7 @@ const navItems: Array<NavItem> = [
     <Icon name="logomark" class="size-8" />
     <Icon name="wordmark" class="size-16 hidden h-8 sm:block" />
   </a>
-  <div>
+    <div>
     <div class="flex items-center gap-6">
       <nav class="hidden sm:block">
         <ul class="flex items-center gap-6">
@@ -45,7 +48,7 @@ const navItems: Array<NavItem> = [
       <ThemeSwitcher />
     </div>
     <div id="menu-modal" class="modal hidden" aria-hidden="true">
-      <div class="fixed inset-0 bg-default px-8 py-4 text-default">
+      <div class={`fixed inset-0 ${modalBgClass ?? "bg-default text-default"} px-8 py-4`}>
         <div class="space-y-4" role="dialog" aria-modal="true">
           <header class="text-right">
             <button

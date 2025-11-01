@@ -57,13 +57,23 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
             .hero-background { background-color: #581c87; background-image: linear-gradient(#581c87d9,#581c87f2), url('https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center; }
             .custom-purple-600 { background-color: #581c87; }
             .focus-ring-purple { --tw-ring-color: #581c87; }
+
+            /* Force header (#page-header) to always have purple background on this page */
+            #page-header { background-color: #581c87 !important; border-bottom-color: transparent !important; }
+            /* ensure text/icons remain visible */
+            #page-header a, #page-header .btn, #page-header svg { color: white !important; }
         </style>
     </head>
     <body class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white">
-        <Header />
+                <Header navItems={[
+                    { title: 'Início', url: '#top' },
+                    { title: 'Processo', url: '#processo' },
+                    { title: 'Demonstração', url: '#demonstracao' },
+                    { title: 'Contato', url: '#contato' },
+                ]} modalBgClass="bg-[#581c87] text-white" />
 
         <main>
-            <header class="hero-background text-white">
+            <header id="top" class="hero-background text-white">
                 <div class="container mx-auto px-6 py-20 text-center">
                     <div class="mb-8">
                         <Image src={logo} alt="Logo da Nitro Produtora" class="mx-auto h-12" />
@@ -74,7 +84,7 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
                 </div>
             </header>
 
-            <section class="py-16 md:py-24 bg-white">
+            <section id="processo" class="py-16 md:py-24 bg-white">
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Seu conteúdo é incrível, mas seus vídeos não passam a mesma impressão?</h2>
                     <p class="max-w-3xl mx-auto text-gray-600 mb-12">Iluminação ruim, som abafado e edições confusas podem destruir a percepção de valor do seu curso. Nós resolvemos isso para você.</p>
@@ -104,7 +114,7 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
                 </div>
             </section>
 
-            <section class="py-16 md:py-24 bg-gray-50">
+            <section id="demonstracao" class="py-16 md:py-24 bg-gray-50">
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Nosso Processo Simplificado para Criar seu Curso</h2>
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-left relative">

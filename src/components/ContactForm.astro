@@ -1,0 +1,236 @@
+---
+import { Image } from "astro:assets";
+import contact from "../assets/contact.webp";
+
+interface Props {
+    title: string;
+    description: string;
+    accessKey: string;
+}
+
+const { title, description, accessKey } = Astro.props;
+---
+
+<section id="contato" class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-xl overflow-hidden">
+            <div class="w-full md:w-1/2 p-8 md:p-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{title}</h2>
+                <p class="text-gray-600 mb-8">{description}</p>
+                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+                    <input type="hidden" name="access_key" value={accessKey}>
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 font-semibold mb-2">Nome</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus-ring-purple" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus-ring-purple" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="phone" class="block text-gray-700 font-semibold mb-2">Telefone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(xx) xxxxx-xxxx" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus-ring-purple" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-semibold mb-2">Breve descrição do seu curso</label>
+                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus-ring-purple"></textarea>
+                    </div>
+                    <button id="contact-submit" type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300">
+                        Receber meu Orçamento Agora
+                    </button>
+                    <div id="contact-feedback" class="mt-4 text-sm"></div>
+                </form>
+
+                <!-- Success Modal -->
+                <div id="success-modal" class="fixed inset-0 z-50 hidden">
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-8 max-w-md w-full mx-4 shadow-2xl">
+                        <div class="text-center">
+                            <div class="mb-4">
+                                <svg class="mx-auto h-12 w-12 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Mensagem Enviada!</h3>
+                            <p class="text-gray-600">Mensagem enviada com sucesso. Em breve entraremos em contato!</p>
+                            <button id="close-modal" class="mt-6 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                                Fechar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <Image src={contact} alt="Atendente sorrindo" class="w-full h-full object-cover" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .focus-ring-purple { 
+        --tw-ring-color: #581c87; 
+    }
+</style>
+
+<script>
+    (function(){
+        const form = document.getElementById('contact-form');
+        const feedback = document.getElementById('contact-feedback');
+        const submitBtn = document.getElementById('contact-submit');
+        const phoneInput = document.getElementById('phone');
+        const emailInput = document.getElementById('email');
+
+        // Validate email format
+        function isValidEmail(email) {
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return emailRegex.test(email);
+        }
+
+        // Validate phone format
+        function isValidPhone(phone) {
+            const phoneRegex = /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
+            return phoneRegex.test(phone);
+        }
+
+        // Format phone number as user types
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+            if (value.length <= 11) {
+                if (value.length >= 2) {
+                    value = '(' + value.substring(0,2) + ')' + 
+                        (value.length > 2 ? ' ' + value.substring(2) : '');
+                }
+                if (value.length > 6) {
+                    const remaining = value.substring(3);
+                    const firstPart = remaining.slice(0, -4);
+                    const lastPart = remaining.slice(-4);
+                    value = value.substring(0,3) + firstPart + '-' + lastPart;
+                }
+                e.target.value = value;
+            }
+            // Visual feedback for phone format
+            if (value.length > 0) {
+                if (isValidPhone(e.target.value)) {
+                    e.target.setCustomValidity('');
+                    e.target.classList.remove('border-red-500');
+                    e.target.classList.add('border-green-500');
+                } else {
+                    e.target.setCustomValidity('Por favor, insira um telefone no formato (xx) xxxxx-xxxx ou (xx) xxxx-xxxx');
+                    e.target.classList.remove('border-green-500');
+                    e.target.classList.add('border-red-500');
+                }
+            }
+        });
+
+        // Validate email as user types
+        emailInput.addEventListener('input', function(e) {
+            if (e.target.value.length > 0) {
+                if (isValidEmail(e.target.value)) {
+                    e.target.setCustomValidity('');
+                    e.target.classList.remove('border-red-500');
+                    e.target.classList.add('border-green-500');
+                } else {
+                    e.target.setCustomValidity('Por favor, insira um email válido');
+                    e.target.classList.remove('border-green-500');
+                    e.target.classList.add('border-red-500');
+                }
+            }
+        });
+
+        form.addEventListener('submit', async function(e){
+            e.preventDefault();
+            feedback.textContent = '';
+            
+            // Validate all fields before submission
+            const email = emailInput.value;
+            const phone = phoneInput.value;
+            
+            if (!isValidEmail(email)) {
+                feedback.style.color = 'red';
+                feedback.textContent = 'Por favor, insira um email válido';
+                emailInput.focus();
+                return;
+            }
+            
+            // Remove any remaining validation messages
+            phoneInput.setCustomValidity('');
+            
+            // Final validation before submit
+            if (!phone.match(/^\(\d{2}\)\s\d{4,5}-\d{4}$/)) {
+                feedback.style.color = 'red';
+                feedback.textContent = 'Por favor, insira um telefone no formato (xx) xxxxx-xxxx ou (xx) xxxx-xxxx';
+                phoneInput.focus();
+                return;
+            }
+
+            submitBtn.disabled = true;
+            const formData = new FormData(form);
+
+            try {
+                const res = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                const data = await res.json();
+                if (res.status === 200) {
+                    // Show success modal and start timer
+                    modal.classList.remove('hidden');
+                    startModalTimer();
+                    form.reset();
+                    // Reset validation styles
+                    [emailInput, phoneInput].forEach(input => {
+                        input.classList.remove('border-green-500', 'border-red-500');
+                    });
+                } else {
+                    feedback.style.color = 'red';
+                    feedback.textContent = data.message || 'Erro ao enviar. Tente novamente.';
+                }
+            } catch (err) {
+                feedback.style.color = 'red';
+                feedback.textContent = 'Erro de rede. Tente novamente mais tarde.';
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Modal close handling
+        const modal = document.getElementById('success-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        let modalTimer;
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            if (modalTimer) {
+                clearTimeout(modalTimer);
+            }
+        }
+
+        function startModalTimer() {
+            if (modalTimer) {
+                clearTimeout(modalTimer);
+            }
+            // 5 segundos = 5000 milissegundos
+            modalTimer = setTimeout(closeModal, 5000);
+        }
+        
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    })();
+</script>

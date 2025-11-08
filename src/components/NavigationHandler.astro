@@ -1,0 +1,35 @@
+---
+// Component for handling navigation visibility based on scroll position
+---
+
+<script>
+    const header = document.querySelector("#page-header");
+    const demonstracaoSection = document.querySelector("#demonstracao");
+    const navItems = header?.querySelector("nav");
+    const logo = header?.querySelector("a:first-child");
+
+    // Initially hide nav items and logo
+    [navItems, logo].forEach(element => {
+        if (element) {
+            element.classList.add("opacity-0", "pointer-events-none");
+        }
+    });
+
+    window.addEventListener("scroll", () => {
+        // Nav items and logo visibility based on demonstracao section
+        if (demonstracaoSection && navItems && logo) {
+            const rect = demonstracaoSection.getBoundingClientRect();
+            if (rect.top <= 0) {
+                [navItems, logo].forEach(element => {
+                    element.classList.remove("opacity-0", "pointer-events-none");
+                    element.classList.add("opacity-100");
+                });
+            } else {
+                [navItems, logo].forEach(element => {
+                    element.classList.remove("opacity-100");
+                    element.classList.add("opacity-0", "pointer-events-none");
+                });
+            }
+        }
+    });
+</script>

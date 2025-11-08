@@ -2,9 +2,13 @@
 import "@fontsource-variable/inter";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import { Image } from "astro:assets";
-import logo from "../icons/wordmark.svg";
-import contact from "../assets/contact.webp";
+import VideoaulasHero from "@components/VideoaulasHero.astro";
+import ProblemsSection from "@components/ProblemsSection.astro";
+import ProcessSection from "@components/ProcessSection.astro";
+import VideoDemo from "@components/VideoDemo.astro";
+import ContactForm from "@components/ContactForm.astro";
+import WhatsAppButton from "@components/WhatsAppButton.astro";
+import NavigationHandler from "@components/NavigationHandler.astro";
 import "../styles/index.css";
 
 const { generator, site } = Astro;
@@ -50,18 +54,22 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
             });
         </script>
         <style>
-            /* Force same font stack as index.astro and ensure hero uses the purple background */
-            :root { --inter-font: Inter Variable, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+            /* Global styles for videoaulas page */
+            :root { 
+                --inter-font: Inter Variable, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; 
+            }
             html { font-family: var(--inter-font); }
             body { font-family: var(--inter-font); }
-            .hero-background { background-color: #581c87; background-image: linear-gradient(#581c87d9,#581c87f2), url('https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center; }
-            .custom-purple-600 { background-color: #581c87; }
-            .focus-ring-purple { --tw-ring-color: #581c87; }
 
             /* Force header (#page-header) to always have purple background on this page */
-            #page-header { background-color: #581c87 !important; border-bottom-color: transparent !important; }
+            #page-header { 
+                background-color: #581c87 !important; 
+                border-bottom-color: transparent !important; 
+            }
             /* ensure text/icons remain visible */
-            #page-header a, #page-header .btn, #page-header svg { color: white !important; }
+            #page-header a, #page-header .btn, #page-header svg { 
+                color: white !important; 
+            }
             /* Navigation items and logo transition */
             #page-header nav,
             #page-header > a:first-child {
@@ -89,373 +97,35 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
                 ]} modalBgClass="bg-[#581c87] text-white" />
 
         <main>
-            <header id="top" class="hero-background text-white">
-                <div class="container mx-auto px-6 py-20 text-center">
-                    <div class="mb-8">
-                        <Image src={logo} alt="Logo da Nitro Produtora" class="mx-auto h-12" />
-                    </div>
-                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Transforme seu conhecimento em um curso online de sucesso.</h1>
-                    <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">Produzimos videoaulas com qualidade de cinema para educadores, especialistas e empresas que desejam engajar e vender mais.</p>
-                    <a href="#contato" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">Quero um Orçamento</a>
-                </div>
-            </header>
+            <VideoaulasHero 
+                title="Transforme seu conhecimento em um curso online de sucesso."
+                description="Produzimos videoaulas com qualidade de cinema para educadores, especialistas e empresas que desejam engajar e vender mais."
+                ctaText="Quero um Orçamento"
+                ctaLink="#contato"
+            />
 
-            <section id="processo" class="py-16 md:py-24 bg-white">
-                <div class="container mx-auto px-6 text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Seu conteúdo é incrível, mas seus vídeos não passam a mesma impressão?</h2>
-                    <p class="max-w-3xl mx-auto text-gray-600 mb-12">Iluminação ruim, som abafado e edições confusas podem destruir a percepção de valor do seu curso. Nós resolvemos isso para você.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                        <div class="space-y-4">
-                            <div class="bg-red-100 p-4 rounded-lg inline-block">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Gravações Caseiras</h3>
-                            <p class="text-gray-600">Vídeos que parecem amadores e não retêm a atenção dos alunos.</p>
-                        </div>
-                        <div class="space-y-4">
-                            <div class="bg-red-100 p-4 rounded-lg inline-block">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m-2 0l2 2m-2-2l-2 2m2-2l-2-2" /></svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Áudio Ruim</h3>
-                            <p class="text-gray-600">Som com ruídos e ecos que dificultam o aprendizado e cansam o espectador.</p>
-                        </div>
-                        <div class="space-y-4">
-                            <div class="bg-red-100 p-4 rounded-lg inline-block">
-                             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19M4.879 4.879L9.757 9.757M14.121 9.757L9.757 14.121m9.243-4.364L14.121 5M4.879 19L9.757 14.121" /></svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Edição Complicada</h3>
-                            <p class="text-gray-600">Horas perdidas ou um resultado final que não agrada.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <ProblemsSection />
 
-            <section id="demonstracao" class="py-16 md:py-24 bg-gray-50">
-                <div class="container mx-auto px-6 text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Nosso Processo Simplificado para Criar seu Curso</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-left relative">
-                        <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200" style="transform: translateY(-50%); z-index: 0;"></div>
-                        <div class="bg-white p-6 rounded-lg shadow-lg z-10">
-                            <div class="flex items-center gap-4 mb-4">
-                                <div class="custom-purple-600 text-white rounded-full h-12 w-12 flex items-center justify-center font-bold text-lg shrink-0">1</div>
-                                <h3 class="text-xl font-bold text-gray-800">Planejamento</h3>
-                            </div>
-                            <p class="text-gray-600">Entendemos seus objetivos, o perfil dos seus alunos e definimos a estrutura das aulas.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-lg z-10">
-                            <div class="flex items-center gap-4 mb-4">
-                                <div class="custom-purple-600 text-white rounded-full h-12 w-12 flex items-center justify-center font-bold text-lg shrink-0">2</div>
-                                <h3 class="text-xl font-bold text-gray-800">Gravação</h3>
-                            </div>
-                            <p class="text-gray-600">Cuidamos de tudo: iluminação, câmeras e som. Você só se preocupa com o conteúdo.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-lg z-10">
-                            <div class="flex items-center gap-4 mb-4">
-                                <div class="custom-purple-600 text-white rounded-full h-12 w-12 flex items-center justify-center font-bold text-lg shrink-0">3</div>
-                                <h3 class="text-xl font-bold text-gray-800">Pós-Produção</h3>
-                            </div>
-                            <p class="text-gray-600">Editamos, adicionamos sua identidade visual, tratamos as cores e o áudio para um resultado impecável.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-lg z-10">
-                            <div class="flex items-center gap-4 mb-4">
-                                <div class="custom-purple-600 text-white rounded-full h-12 w-12 flex items-center justify-center font-bold text-lg shrink-0">4</div>
-                                <h3 class="text-xl font-bold text-gray-800">Entrega</h3>
-                            </div>
-                            <p class="text-gray-600">Entregamos os arquivos prontos para você subir na sua plataforma e começar a vender.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <ProcessSection />
 
-            <section class="py-16 md:py-24 bg-gray-50" id="qualidade">
-                <div class="container mx-auto px-6">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Veja a Qualidade Nitro em Ação</h2>
-                        <p class="text-gray-600 max-w-3xl mx-auto mt-4">Aperte o play e descubra os bastidores da criação de uma videoaula profissional que realmente encanta e engaja os alunos.</p>
-                    </div>
+            <VideoDemo 
+                videoId="IopFT1OyXFs"
+                title="Veja a Qualidade Nitro em Ação"
+                description="Aperte o play e descubra os bastidores da criação de uma videoaula profissional que realmente encanta e engaja os alunos."
+                ctaLink="#contato"
+                ctaText="Grave seu curso com a Nitro!"
+            />
 
-                    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-                        <div class="w-full lg:w-2/3">
-                            <div class="relative w-full shadow-2xl rounded-lg overflow-hidden" style="padding-top:56.25%;">
-                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/IopFT1OyXFs?si=Z13mjA136vgdZXof&controls=1&rel=0" title="Demonstração Nitro Produtora" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-
-                        <div class="w-full lg:w-1/3">
-                            <div class="bg-white p-6 rounded-lg shadow-lg">
-                                <h3 class="text-xl font-bold text-gray-800 mb-3">O Que Você Vai Ver no Vídeo:</h3>
-                                <ul class="space-y-3 text-gray-600 text-sm mb-6">
-                                    <li class="flex items-start">
-                                        <svg class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                        <span><strong>Equipamentos de ponta:</strong> Câmeras, lentes e microfones que usamos para garantir um visual de cinema.</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                        <span><strong>Dicas práticas para seu melhor desempenho na gravação:</strong> O segredo para criar uma atmosfera profissional em qualquer ambiente.</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                        <span><strong>O resultado final:</strong> A prova de que seu conteúdo merece uma produção impecável.</span>
-                                    </li>
-                                </ul>
-                                <a href="#contato" class="w-full text-center block bg-orange-500 hover:bg-orange-600 text-white font-bold py-2.5 px-6 rounded-lg text-base transition duration-300 transform hover:scale-105">Grave seu curso com a Nitro!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contato" class="py-16 md:py-24 bg-white">
-                <div class="container mx-auto px-6">
-                    <div class="flex flex-col md:flex-row bg-gray-50 rounded-lg shadow-xl overflow-hidden">
-                        <div class="w-full md:w-1/2 p-8 md:p-12">
-                            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Pronto para Lançar seu Curso Online?</h2>
-                            <p class="text-gray-600 mb-8">Vamos conversar! Preencha o formulário e nossa equipe entrará em contato para entender seu projeto e enviar uma proposta sem compromisso.</p>
-                            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
-                                <input type="hidden" name="access_key" value="38c81037-4cb7-4a3d-a25b-7333afbf9bad">
-                                <div class="mb-4"><label for="name" class="block text-gray-700 font-semibold mb-2">Nome</label><input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus-ring-purple" required></div>
-                                <div class="mb-4"><label for="email" class="block text-gray-700 font-semibold mb-2">Email</label><input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus-ring-purple" required></div>
-                                <div class="mb-4"><label for="phone" class="block text-gray-700 font-semibold mb-2">Telefone</label><input type="tel" id="phone" name="phone" placeholder="(xx) xxxxx-xxxx" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus-ring-purple" required></div>
-                                <div class="mb-6"><label for="message" class="block text-gray-700 font-semibold mb-2">Breve descrição do seu curso</label><textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus-ring-purple"></textarea></div>
-                                <button id="contact-submit" type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300">Receber meu Orçamento Agora</button>
-                                <div id="contact-feedback" class="mt-4 text-sm"></div>
-                            </form>
-
-                            <!-- Success Modal -->
-                            <div id="success-modal" class="fixed inset-0 z-50 hidden">
-                                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-                                <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-8 max-w-md w-full mx-4 shadow-2xl">
-                                    <div class="text-center">
-                                        <div class="mb-4">
-                                            <svg class="mx-auto h-12 w-12 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                            </svg>
-                                        </div>
-                                        <h3 class="text-xl font-bold text-gray-900 mb-4">Mensagem Enviada!</h3>
-                                        <p class="text-gray-600">Mensagem enviada com sucesso. Em breve entraremos em contato!</p>
-                                        <button id="close-modal" class="mt-6 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
-                                            Fechar
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <script>
-                                (function(){
-                                    const form = document.getElementById('contact-form');
-                                    const feedback = document.getElementById('contact-feedback');
-                                    const submitBtn = document.getElementById('contact-submit');
-                                    const phoneInput = document.getElementById('phone');
-                                    const emailInput = document.getElementById('email');
-
-                                    // Validate email format
-                                    function isValidEmail(email) {
-                                        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-                                        return emailRegex.test(email);
-                                    }
-
-                                    // Validate phone format
-                                    function isValidPhone(phone) {
-                                        const phoneRegex = /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
-                                        return phoneRegex.test(phone);
-                                    }
-
-                                    // Format phone number as user types
-                                    phoneInput.addEventListener('input', function(e) {
-                                        let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
-                                        if (value.length <= 11) {
-                                            if (value.length >= 2) {
-                                                value = '(' + value.substring(0,2) + ')' + 
-                                                    (value.length > 2 ? ' ' + value.substring(2) : '');
-                                            }
-                                            if (value.length > 6) {
-                                                const remaining = value.substring(3);
-                                                const firstPart = remaining.slice(0, -4);
-                                                const lastPart = remaining.slice(-4);
-                                                value = value.substring(0,3) + firstPart + '-' + lastPart;
-                                            }
-                                            e.target.value = value;
-                                        }
-                                        // Visual feedback for phone format
-                                        if (value.length > 0) {
-                                            if (isValidPhone(e.target.value)) {
-                                                e.target.setCustomValidity('');
-                                                e.target.classList.remove('border-red-500');
-                                                e.target.classList.add('border-green-500');
-                                            } else {
-                                                e.target.setCustomValidity('Por favor, insira um telefone no formato (xx) xxxxx-xxxx ou (xx) xxxx-xxxx');
-                                                e.target.classList.remove('border-green-500');
-                                                e.target.classList.add('border-red-500');
-                                            }
-                                        }
-                                    });
-
-                                    // Validate email as user types
-                                    emailInput.addEventListener('input', function(e) {
-                                        if (e.target.value.length > 0) {
-                                            if (isValidEmail(e.target.value)) {
-                                                e.target.setCustomValidity('');
-                                                e.target.classList.remove('border-red-500');
-                                                e.target.classList.add('border-green-500');
-                                            } else {
-                                                e.target.setCustomValidity('Por favor, insira um email válido');
-                                                e.target.classList.remove('border-green-500');
-                                                e.target.classList.add('border-red-500');
-                                            }
-                                        }
-                                    });
-
-                                    form.addEventListener('submit', async function(e){
-                                        e.preventDefault();
-                                        feedback.textContent = '';
-                                        
-                                        // Validate all fields before submission
-                                        const email = emailInput.value;
-                                        const phone = phoneInput.value;
-                                        
-                                        if (!isValidEmail(email)) {
-                                            feedback.style.color = 'red';
-                                            feedback.textContent = 'Por favor, insira um email válido';
-                                            emailInput.focus();
-                                            return;
-                                        }
-                                        
-                                        // Remove any remaining validation messages
-                                        phoneInput.setCustomValidity('');
-                                        
-                                        // Final validation before submit
-                                        if (!phone.match(/^\(\d{2}\)\s\d{4,5}-\d{4}$/)) {
-                                            feedback.style.color = 'red';
-                                            feedback.textContent = 'Por favor, insira um telefone no formato (xx) xxxxx-xxxx ou (xx) xxxx-xxxx';
-                                            phoneInput.focus();
-                                            return;
-                                        }
-
-                                        submitBtn.disabled = true;
-                                        const formData = new FormData(form);
-
-                                        try {
-                                            const res = await fetch(form.action, {
-                                                method: 'POST',
-                                                body: formData,
-                                                headers: {
-                                                    'Accept': 'application/json'
-                                                }
-                                            });
-                                            const data = await res.json();
-                                            if (res.status === 200) {
-                                                // Show success modal and start timer
-                                                modal.classList.remove('hidden');
-                                                startModalTimer();
-                                                form.reset();
-                                                // Reset validation styles
-                                                [emailInput, phoneInput].forEach(input => {
-                                                    input.classList.remove('border-green-500', 'border-red-500');
-                                                });
-                                            } else {
-                                                feedback.style.color = 'red';
-                                                feedback.textContent = data.message || 'Erro ao enviar. Tente novamente.';
-                                            }
-                                        } catch (err) {
-                                            feedback.style.color = 'red';
-                                            feedback.textContent = 'Erro de rede. Tente novamente mais tarde.';
-                                        } finally {
-                                            submitBtn.disabled = false;
-                                        }
-                                    });
-                                    // Modal close handling
-                                    const modal = document.getElementById('success-modal');
-                                    const closeModalBtn = document.getElementById('close-modal');
-                                    let modalTimer;
-
-                                    function closeModal() {
-                                        modal.classList.add('hidden');
-                                        if (modalTimer) {
-                                            clearTimeout(modalTimer);
-                                        }
-                                    }
-
-                                    function startModalTimer() {
-                                        if (modalTimer) {
-                                            clearTimeout(modalTimer);
-                                        }
-                                        // 5 segundos = 5000 milissegundos
-                                        modalTimer = setTimeout(closeModal, 5000);
-                                    }
-                                    
-                                    closeModalBtn.addEventListener('click', closeModal);
-
-                                    // Close modal when clicking outside
-                                    modal.addEventListener('click', (e) => {
-                                        if (e.target === modal) {
-                                            closeModal();
-                                        }
-                                    });
-
-                                    // Close modal with Escape key
-                                    document.addEventListener('keydown', (e) => {
-                                        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-                                            closeModal();
-                                        }
-                                    });
-                                })();
-                            </script>
-                        </div>
-                        <div class="w-full md:w-1/2">
-                            <Image src={contact} alt="Atendente sorrindo" class="w-full h-full object-cover" />
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <ContactForm 
+                title="Pronto para Lançar seu Curso Online?"
+                description="Vamos conversar! Preencha o formulário e nossa equipe entrará em contato para entender seu projeto e enviar uma proposta sem compromisso."
+                accessKey="38c81037-4cb7-4a3d-a25b-7333afbf9bad"
+            />
         </main>
 
         <Footer />
 
-        <!-- WhatsApp flutuante -->
-        <a id="whatsapp-button" href="https://wa.me/5519974121947?text=Ol%C3%A1%2C%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20site%21" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-opacity duration-500 opacity-0 pointer-events-none z-50 flex items-center justify-center" aria-label="Entrar em contato via WhatsApp">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.48A11.89 11.89 0 0 0 12 0C5.37 0 .01 5.37.01 12c0 2.11.55 4.18 1.6 6.01L0 24l6.25-1.64A11.95 11.95 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.19-1.25-6.18-3.48-8.52zM12 22.02c-1.8 0-3.55-.48-5.09-1.39l-.36-.21-3.72.98.99-3.63-.24-.37A9.92 9.92 0 0 1 2.01 12c0-5.51 4.48-9.99 9.99-9.99 2.66 0 5.17 1.04 7.06 2.93a9.92 9.92 0 0 1 2.94 7.06c0 5.51-4.48 10-10 10zm5.48-7.63c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.47-2.4-1.5-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.21-.24-.58-.5-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.11 3.2 5.1 4.48.71.31 1.26.5 1.69.64.71.22 1.36.19 1.87.12.57-.08 1.77-.72 2.03-1.41.25-.7.25-1.29.17-1.41-.08-.13-.27-.2-.57-.35z"/></svg>
-        </a>
-
-        <script>
-            const button = document.getElementById("whatsapp-button");
-            const header = document.querySelector("#page-header");
-            const demonstracaoSection = document.querySelector("#demonstracao");
-            const navItems = header?.querySelector("nav");
-            const logo = header?.querySelector("a:first-child");
-
-            // Initially hide nav items and logo
-            [navItems, logo].forEach(element => {
-                if (element) {
-                    element.classList.add("opacity-0", "pointer-events-none");
-                }
-            });
-
-            window.addEventListener("scroll", () => {
-                // WhatsApp button visibility
-                if (window.scrollY > 100) {
-                    button?.classList.remove("opacity-0", "pointer-events-none");
-                    button?.classList.add("opacity-100");
-                } else {
-                    button?.classList.remove("opacity-100");
-                    button?.classList.add("opacity-0", "pointer-events-none");
-                }
-
-                // Nav items and logo visibility based on demonstracao section
-                if (demonstracaoSection && navItems && logo) {
-                    const rect = demonstracaoSection.getBoundingClientRect();
-                    if (rect.top <= 0) {
-                        [navItems, logo].forEach(element => {
-                            element.classList.remove("opacity-0", "pointer-events-none");
-                            element.classList.add("opacity-100");
-                        });
-                    } else {
-                        [navItems, logo].forEach(element => {
-                            element.classList.remove("opacity-100");
-                            element.classList.add("opacity-0", "pointer-events-none");
-                        });
-                    }
-                }
-            });
-        </script>
+        <WhatsAppButton phoneNumber="5519974121947" />
+        <NavigationHandler />
     </body>
 </html>

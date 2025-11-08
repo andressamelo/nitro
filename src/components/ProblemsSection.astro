@@ -1,0 +1,53 @@
+---
+interface Problem {
+    icon: string;
+    title: string;
+    description: string;
+    iconColor: string;
+}
+
+const problems: Problem[] = [
+    {
+        icon: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z",
+        title: "Gravações Caseiras",
+        description: "Vídeos que parecem amadores e não retêm a atenção dos alunos.",
+        iconColor: "text-red-500"
+    },
+    {
+        icon: "M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z M17 14l2-2m-2 0l2 2m-2-2l-2 2m2-2l-2-2",
+        title: "Áudio Ruim",
+        description: "Som com ruídos e ecos que dificultam o aprendizado e cansam o espectador.",
+        iconColor: "text-red-500"
+    },
+    {
+        icon: "M14.121 14.121L19 19M4.879 4.879L9.757 9.757M14.121 9.757L9.757 14.121m9.243-4.364L14.121 5M4.879 19L9.757 14.121",
+        title: "Edição Complicada",
+        description: "Horas perdidas ou um resultado final que não agrada.",
+        iconColor: "text-red-500"
+    }
+];
+---
+
+<section id="processo" class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            Seu conteúdo é incrível, mas seus vídeos não passam a mesma impressão?
+        </h2>
+        <p class="max-w-3xl mx-auto text-gray-600 mb-12">
+            Iluminação ruim, som abafado e edições confusas podem destruir a percepção de valor do seu curso. Nós resolvemos isso para você.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {problems.map((problem) => (
+                <div class="space-y-4">
+                    <div class="bg-red-100 p-4 rounded-lg inline-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" class={`h-8 w-8 ${problem.iconColor}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={problem.icon} />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">{problem.title}</h3>
+                    <p class="text-gray-600">{problem.description}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

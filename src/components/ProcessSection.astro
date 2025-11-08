@@ -1,0 +1,58 @@
+---
+interface Step {
+    number: number;
+    title: string;
+    description: string;
+}
+
+const steps: Step[] = [
+    {
+        number: 1,
+        title: "Planejamento",
+        description: "Entendemos seus objetivos, o perfil dos seus alunos e definimos a estrutura das aulas."
+    },
+    {
+        number: 2,
+        title: "Gravação",
+        description: "Cuidamos de tudo: iluminação, câmeras e som. Você só se preocupa com o conteúdo."
+    },
+    {
+        number: 3,
+        title: "Pós-Produção",
+        description: "Editamos, adicionamos sua identidade visual, tratamos as cores e o áudio para um resultado impecável."
+    },
+    {
+        number: 4,
+        title: "Entrega",
+        description: "Entregamos os arquivos prontos para você subir na sua plataforma e começar a vender."
+    }
+];
+---
+
+<section id="demonstracao" class="py-16 md:py-24 bg-gray-50">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
+            Nosso Processo Simplificado para Criar seu Curso
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-left relative">
+            <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200" style="transform: translateY(-50%); z-index: 0;"></div>
+            {steps.map((step) => (
+                <div class="bg-white p-6 rounded-lg shadow-lg z-10">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="custom-purple-600 text-white rounded-full h-12 w-12 flex items-center justify-center font-bold text-lg shrink-0">
+                            {step.number}
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">{step.title}</h3>
+                    </div>
+                    <p class="text-gray-600">{step.description}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .custom-purple-600 { 
+        background-color: #581c87; 
+    }
+</style>

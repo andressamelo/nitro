@@ -2,10 +2,10 @@
 import { Icon } from "astro-icon/components";
 import type { FooterLink } from "../types";
 
-const links: Array<FooterLink> = [
+const socialLinks: Array<FooterLink> = [
   {
-    url: "#",
-    description: "Veja nosso trabalho no youtube",
+    url: "https://www.youtube.com/@nitroprodutora",
+    description: "Veja nosso trabalho no Youtube",
     icon: "fa-brands:youtube",
     target: "_blank",
   },
@@ -18,29 +18,86 @@ const links: Array<FooterLink> = [
 ];
 ---
 
-<footer class="relative items-center justify-center bg-[#581c87] text-white border-t-2 border-x-stone-800">
-  <div class="flex items-center justify-center">
-    <ul class="relative grid grid-cols-2 gap-4 sm:grid-cols-3 mt-8">
-      {
-        links.map((link) => (
-          <li>
-            <a
-              class="flex size-10 items-center justify-center p-2 text-white"
-              href={link.url}
-              target={link.target}
-            >
-              <span class="sr-only">{link.description}</span>
-              <Icon class="size-full" name={link.icon} />
-            </a>
-          </li>
-        ))
-      }
-    </ul>    
-  </div>
+<footer class="relative bg-gradient-to-b from-[#581c87] to-[#3b0764] text-white border-t-2 border-purple-600">
+  <div class="container mx-auto px-6 py-12">
+    <!-- Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
+      
+      <!-- Sobre a Nitro -->
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold mb-4 text-purple-200">Sobre a Nitro</h3>
+        <p class="text-sm text-gray-300 leading-relaxed">
+          Produtora de vídeos especializada em conteúdo estratégico para redes sociais. 
+          Transformamos ideias em vídeos que conectam e impactam.
+        </p>
+        <p class="text-xs text-purple-300 font-semibold">
+          Criando vídeos com paixão e performance.
+        </p>
+      </div>
 
+      <!-- Contato -->
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold mb-4 text-purple-200">Contato</h3>
+        <div class="space-y-3 text-sm">
+          <div class="flex items-start gap-3">
+            <Icon name="mdi:email" class="size-5 text-purple-300 mt-0.5 flex-shrink-0" />
+            <div>
+              <a href="mailto:contato@nitroag.com.br" class="text-gray-300 hover:text-white transition-colors">
+                contato@nitroag.com.br
+              </a>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <Icon name="mdi:phone" class="size-5 text-purple-300 mt-0.5 flex-shrink-0" />
+            <div>
+              <a href="tel:+5519974121947" class="text-gray-300 hover:text-white transition-colors">
+                (19) 97412-1947
+              </a>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <Icon name="mdi:map-marker" class="size-5 text-purple-300 mt-0.5 flex-shrink-0" />
+            <div class="text-gray-300">
+              São Paulo, SP<br />
+              Brasil
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <div class="container mx-auto py-6 text-center">
-      <p class="text-xs text-white">&copy; 2025 Nitro Produtora. Todos os direitos reservados.</p>
-      <p class="text-xs text-white">Criando vídeos com paixão e performance.</p>
+      <!-- Links Rápidos e Redes Sociais -->
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold mb-4 text-purple-200">Conecte-se</h3>
+        <div class="space-y-4">
+          <p class="text-sm text-gray-300">Siga-nos nas redes sociais:</p>
+          <ul class="flex gap-4 flex-wrap">
+            {
+              socialLinks.map((link) => (
+                <li>
+                  <a
+                    class="flex size-12 items-center justify-center rounded-full bg-purple-700/50 hover:bg-purple-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/50"
+                    href={link.url}
+                    target={link.target}
+                    rel="noopener noreferrer"
+                  >
+                    <span class="sr-only">{link.description}</span>
+                    <Icon class="size-6" name={link.icon} />
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-purple-700/50 pt-8 mt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+        <p class="text-sm text-gray-300">
+          &copy; 2025 Nitro Produtora. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
   </div>
 </footer>

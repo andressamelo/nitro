@@ -143,18 +143,17 @@ const widths = [450, 800, 1200];
   </section>
 
   <!-- Success Modal -->
-  <div id="success-modal-home" class="fixed inset-0 z-50 hidden">
-      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-      <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 rounded-lg p-8 max-w-md w-full mx-4 shadow-2xl">
-          <div class="text-center">
-              <div class="mb-4">
-                  <svg class="mx-auto h-12 w-12 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <div id="success-modal-home" class="fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300 ease-in-out">
+      <div class="absolute inset-0 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 flex items-center justify-center">
+          <div class="text-center px-8 py-12 w-full h-full flex flex-col items-center justify-center transform scale-95 transition-transform duration-300 ease-in-out" id="modal-content-home">
+              <div class="mb-8">
+                  <svg class="mx-auto h-20 w-20 text-white animate-pulse" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Mensagem Enviada!</h3>
-              <p class="text-gray-600 dark:text-gray-300">Mensagem enviada com sucesso. Em breve entraremos em contato!</p>
-              <button id="close-modal-home" class="mt-6 bg-primary hover:bg-purple-800 text-white font-bold py-2 px-6 rounded-lg transition-colors">
+              <h3 class="text-4xl md:text-5xl font-bold text-white mb-6">Mensagem Enviada!</h3>
+              <p class="text-xl text-purple-100 mb-8 max-w-2xl">Mensagem enviada com sucesso. Em breve entraremos em contato!</p>
+              <button id="close-modal-home" class="bg-white text-purple-700 hover:bg-purple-50 font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg text-lg">
                   Fechar
               </button>
           </div>
@@ -253,7 +252,12 @@ const widths = [450, 800, 1200];
                 return;
             }
 
+            // Disable submit button and change text
             submitBtn.disabled = true;
+            const originalButtonText = submitBtn.textContent;
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            
             const formData = new FormData(form);
 
             try {
@@ -266,8 +270,8 @@ const widths = [450, 800, 1200];
                 });
                 const data = await res.json();
                 if (res.status === 200) {
-                    // Show success modal and start timer
-                    modal.classList.remove('hidden');
+                    // Show success modal with fade in effect
+                    showModal();
                     startModalTimer();
                     form.reset();
                     // Reset validation styles
@@ -277,22 +281,56 @@ const widths = [450, 800, 1200];
                 } else {
                     feedback.style.color = 'red';
                     feedback.textContent = data.message || 'Erro ao enviar. Tente novamente.';
+                    // Re-enable button on error
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalButtonText;
+                    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
                 }
             } catch (err) {
                 feedback.style.color = 'red';
                 feedback.textContent = 'Erro de rede. Tente novamente mais tarde.';
-            } finally {
+                // Re-enable button on error
                 submitBtn.disabled = false;
+                submitBtn.textContent = originalButtonText;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
             }
         });
         
         // Modal close handling
         const modal = document.getElementById('success-modal-home');
+        const modalContent = document.getElementById('modal-content-home');
         const closeModalBtn = document.getElementById('close-modal-home');
         let modalTimer;
 
+        function showModal() {
+            modal.classList.remove('hidden');
+            // Force reflow to ensure hidden class is removed before adding opacity
+            modal.offsetHeight;
+            // Add fade in effect
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.classList.add('opacity-100');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
         function closeModal() {
-            modal.classList.add('hidden');
+            // Add fade out effect
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            // Hide modal after animation completes
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                // Re-enable submit button when modal closes
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar Mensagem';
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            }, 300);
+            
             if (modalTimer) {
                 clearTimeout(modalTimer);
             }

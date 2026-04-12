@@ -8,7 +8,8 @@ const features: Array<FeatureItem> = [
     title: "Vídeo Institucional",
     description:
       "Conte a história da sua marca com autenticidade e impacto. Criamos vídeos institucionais que traduzem seus valores, missão e diferencial de forma envolvente.",
-    icon: "mdi:office-building", 
+    icon: "mdi:office-building",
+    link: "/video-institucional",
   },
   {
     title: "Filmmaker / Cinegrafista",
@@ -57,7 +58,7 @@ const features: Array<FeatureItem> = [
           </div>
           <p class="text-center font-extrabold text-xl">{title}</p>
           <p class="text-center text-offset text-sm">{description}</p>
-          {link && title === "Videoulas/Gravação de Curso" && (
+          {link && (
             <a href={link} class="mt-2 inline-block px-4 py-2 bg-primary text-white rounded-lg font-semibold shadow hover:bg-primary/80 transition-colors text-sm">Saiba mais</a>
           )}
         </li>

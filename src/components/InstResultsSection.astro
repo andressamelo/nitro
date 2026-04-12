@@ -1,0 +1,54 @@
+---
+interface Result {
+    icon: string;
+    title: string;
+    description: string;
+}
+
+const results: Result[] = [
+    {
+        icon: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z",
+        title: "Credibilidade Imediata",
+        description: "Um vídeo profissional posiciona sua empresa como referência no mercado desde o primeiro contato."
+    },
+    {
+        icon: "M13 10V3L4 14h7v7l9-11h-7z",
+        title: "Mais Conversões",
+        description: "Páginas com vídeo institucional convertem até 80% mais do que páginas sem vídeo, segundo pesquisas de marketing."
+    },
+    {
+        icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z",
+        title: "Equipe Orgulhosa",
+        description: "Um vídeo que representa bem a empresa fortalece o senso de pertencimento e a cultura organizacional."
+    },
+    {
+        icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+        title: "Alcance Ampliado",
+        description: "Vídeos são o conteúdo mais compartilhado nas redes sociais, multiplicando seu alcance organicamente."
+    }
+];
+---
+
+<section class="py-16 md:py-24 bg-[#581c87] text-white">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">
+            O que um Vídeo Institucional Profissional Faz pela Sua Empresa
+        </h2>
+        <p class="max-w-3xl mx-auto text-purple-200 mb-12 font-medium">
+            Investir em um vídeo institucional de qualidade não é custo — é estratégia. Veja os resultados que nossos clientes experimentam.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {results.map((result) => (
+                <div class="bg-white/10 border border-white/20 p-6 rounded-xl hover:bg-white/20 transition-colors duration-300">
+                    <div class="bg-yellow-400 p-3 rounded-lg inline-block mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-[#581c87]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={result.icon} />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">{result.title}</h3>
+                    <p class="text-purple-200 text-sm leading-relaxed">{result.description}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

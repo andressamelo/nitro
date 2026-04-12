@@ -3,16 +3,19 @@ import "@fontsource-variable/inter";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import VideoaulasHero from "@components/VideoaulasHero.astro";
-import ProblemsSection from "@components/ProblemsSection.astro";
-import ProcessSection from "@components/ProcessSection.astro";
+import InstProblemsSection from "@components/InstProblemsSection.astro";
+import InstProcessSection from "@components/InstProcessSection.astro";
+import InstResultsSection from "@components/InstResultsSection.astro";
 import VideoDemo from "@components/VideoDemo.astro";
 import ContactForm from "@components/ContactForm.astro";
 import WhatsAppButton from "@components/WhatsAppButton.astro";
 import NavigationHandler from "@components/NavigationHandler.astro";
 import "../styles/index.css";
 
-const { generator, site } = Astro;
-const description = "Transforme seu conhecimento em um curso online de sucesso. Produzimos videoaulas com qualidade de cinema para educadores, especialistas e empresas.";
+const { generator } = Astro;
+const description =
+    "Produza um vídeo institucional que eleva a percepção da sua marca e gera mais clientes. Roteiro, gravação cinematográfica e pós-produção completa em Campinas - SP.";
+const pageUrl = "https://www.nitroag.com.br/video-institucional";
 ---
 
 <!doctype html>
@@ -22,27 +25,27 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <meta name="generator" content={generator} />
+        <link rel="canonical" href={pageUrl} />
 
-        <title>Gravação de Videoaulas Profissionais | Campinas e Região | Nitro Produtora</title>
+        <title>Vídeo Institucional Profissional | Campinas e Região | Nitro Produtora</title>
         <meta name="description" content={description} />
-        <meta name="keywords" content="gravação de videoaulas, produção de curso online, videoaulas profissionais campinas, gravar curso ead, produtora de videoaulas sp, curso online profissional" />
+        <meta name="keywords" content="vídeo institucional, produtora de vídeo institucional, vídeo corporativo campinas e região, produção audiovisual empresarial, vídeo para empresa, filmagem institucional sp" />
         <meta name="author" content="Nitro Produtora" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.nitroag.com.br/videoaulas" />
 
         <!-- Open Graph -->
-        <meta property="og:title" content="Gravação de Videoaulas Profissionais | Nitro Produtora" />
-        <meta property="og:description" content={description} />
+        <meta property="og:title" content="Vídeo Institucional Profissional | Nitro Produtora" />
+        <meta property="og:description" content="Contamos a história da sua empresa com qualidade cinematográfica. Do roteiro à entrega final." />
         <meta property="og:image" content="https://www.nitroag.com.br/assets/destaque.jpg" />
-        <meta property="og:url" content="https://www.nitroag.com.br/videoaulas" />
+        <meta property="og:url" content={pageUrl} />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="pt_BR" />
         <meta property="og:site_name" content="Nitro Produtora" />
 
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Gravação de Videoaulas Profissionais | Nitro Produtora" />
-        <meta name="twitter:description" content={description} />
+        <meta name="twitter:title" content="Vídeo Institucional Profissional | Nitro Produtora" />
+        <meta name="twitter:description" content="Contamos a história da sua empresa com qualidade cinematográfica. Do roteiro à entrega final." />
         <meta name="twitter:image" content="https://www.nitroag.com.br/assets/destaque.jpg" />
 
         <!-- JSON-LD Structured Data -->
@@ -50,8 +53,8 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
         {
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Gravação de Videoaulas Profissionais",
-            "description": "Produção profissional de videoaulas e cursos online com qualidade cinematográfica. Inclui planejamento, gravação com equipe completa, pós-produção e entrega dos arquivos prontos para plataforma EAD.",
+            "name": "Vídeo Institucional Profissional",
+            "description": "Produção de vídeos institucionais com qualidade cinematográfica para empresas. Inclui roteiro, gravação profissional, pós-produção completa e entrega otimizada para todos os canais.",
             "provider": {
                 "@type": "LocalBusiness",
                 "name": "Nitro Produtora",
@@ -66,12 +69,8 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
                 }
             },
             "areaServed": "Brasil",
-            "serviceType": "Produção de Videoaulas",
-            "url": "https://www.nitroag.com.br/videoaulas",
-            "audience": {
-                "@type": "Audience",
-                "audienceType": "Educadores, especialistas, empresas e infoprodutores"
-            }
+            "serviceType": "Produção Audiovisual",
+            "url": "https://www.nitroag.com.br/video-institucional"
         }
         </script>
 
@@ -79,23 +78,20 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-S1C4HWFN3X"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);} 
+            function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'G-S1C4HWFN3X');
         </script>
 
         <!-- initialize theme -->
         <script is:inline>
             const themeSaved = localStorage.getItem("theme");
-
             if (themeSaved) {
                 document.documentElement.dataset.theme = themeSaved;
             } else {
                 const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
                 document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
             }
-
             window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
                 if (!localStorage.getItem("theme")) {
                     document.documentElement.dataset.theme = event.matches ? "dark" : "light";
@@ -103,14 +99,12 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
             });
         </script>
         <style>
-            /* Force header (#page-header) to always have purple background on this page */
-            #page-header { 
-                background-color: #581c87 !important; 
-                border-bottom-color: transparent !important; 
+            #page-header {
+                background-color: #581c87 !important;
+                border-bottom-color: transparent !important;
             }
-            /* ensure text/icons remain visible */
-            #page-header a, #page-header .btn, #page-header svg { 
-                color: white !important; 
+            #page-header a, #page-header .btn, #page-header svg {
+                color: white !important;
             }
             /* Navigation items and logo transition */
             #page-header nav,
@@ -132,42 +126,52 @@ const description = "Transforme seu conhecimento em um curso online de sucesso. 
         </style>
     </head>
     <body class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white">
-                <Header navItems={[
-                    { title: 'Início', url: '#top' },
-                    { title: 'Nossa Qualidade', url: '#qualidade' },
-                    { title: 'Contato', url: '#contato' },
-                ]} modalBgClass="bg-[#581c87] text-white" />
+        <Header
+            navItems={[
+                { title: 'Início', url: '#top' },
+                { title: 'Resultados', url: '#resultados' },
+                { title: 'Nosso Processo', url: '#processo' },
+                { title: 'Contato', url: '#contato' },
+            ]}
+            modalBgClass="bg-[#581c87] text-white"
+        />
 
         <main>
-            <VideoaulasHero 
-                title="Transforme seu conhecimento em um curso online de sucesso."
-                description="Produzimos videoaulas com qualidade de cinema para educadores, especialistas e empresas que desejam engajar e vender mais."
-                ctaText="Quero um Orçamento"
+            <VideoaulasHero
+                title="Vídeos Institucionais que elevam a percepção da sua marca"
+                description="Contamos a história da sua empresa com autenticidade, emoção e qualidade cinematográfica. Do roteiro à entrega final, cuidamos de tudo."
+                ctaText="Quero um Vídeo Institucional"
                 ctaLink="#contato"
+                showLogo={false}
             />
 
-            <ProblemsSection />
+            <InstProblemsSection />
 
-            <ProcessSection />
+            <div id="resultados">
+                <InstResultsSection />
+            </div>
 
-            <VideoDemo 
+            <InstProcessSection />
+
+            <VideoDemo
                 videoId="IopFT1OyXFs"
                 title="Veja a Qualidade Nitro em Ação"
-                description="Aperte o play e descubra os bastidores da criação de uma videoaula profissional que realmente encanta e engaja os alunos."
+                description="Cada frame conta uma história. Veja como transformamos a identidade de uma empresa em um vídeo que emociona, engaja e converte."
                 ctaLink="#contato"
-                ctaText="Grave seu curso com a Nitro!"
+                ctaText="Quero um Vídeo Assim!"
             />
 
-            <ContactForm 
-                title="Pronto para Lançar seu Curso Online?"
-                description="Vamos conversar! Preencha o formulário e nossa equipe entrará em contato para entender seu projeto e enviar uma proposta sem compromisso."
+            <ContactForm
+                title="Pronto para Elevar a Imagem da Sua Empresa?"
+                description="Preencha o formulário e nossa equipe entrará em contato para entender seu projeto e enviar uma proposta personalizada sem compromisso."
                 accessKey="38c81037-4cb7-4a3d-a25b-7333afbf9bad"
+                messageLabel="Conte-nos sobre sua empresa e o que deseja comunicar"
+                messagePlaceholder="Ex: Somos uma empresa de tecnologia e queremos um vídeo que apresente nossa cultura e serviços para novos clientes..."
             />
         </main>
 
         <Footer />
-
         <WhatsAppButton phoneNumber="5519995297915" />
-        <NavigationHandler />
+        <NavigationHandler triggerSection="#resultados" />
     </body>
 </html>

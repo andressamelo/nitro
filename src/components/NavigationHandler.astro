@@ -1,10 +1,13 @@
 ---
-// Component for handling navigation visibility based on scroll position
+interface Props {
+    triggerSection?: string;
+}
+const { triggerSection = "#demonstracao" } = Astro.props;
 ---
 
-<script>
+<script define:vars={{ triggerSection }}>
     const header = document.querySelector("#page-header");
-    const demonstracaoSection = document.querySelector("#demonstracao");
+    const trigger = document.querySelector(triggerSection);
     const navItems = header?.querySelector("nav");
     const logo = header?.querySelector("a:first-child");
 
@@ -16,9 +19,8 @@
     });
 
     window.addEventListener("scroll", () => {
-        // Nav items and logo visibility based on demonstracao section
-        if (demonstracaoSection && navItems && logo) {
-            const rect = demonstracaoSection.getBoundingClientRect();
+        if (trigger && navItems && logo) {
+            const rect = trigger.getBoundingClientRect();
             if (rect.top <= 0) {
                 [navItems, logo].forEach(element => {
                     element.classList.remove("opacity-0", "pointer-events-none");

@@ -24,24 +24,24 @@ const problems: Problem[] = [
 ];
 ---
 
-<section class="py-16 md:py-24 bg-white">
+<section class="py-16 md:py-24 bg-default">
     <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-800 mb-4">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-default mb-4" data-animate>
             Sua empresa é ótima, mas o vídeo não passa essa impressão?
         </h2>
-        <p class="max-w-3xl mx-auto text-gray-600 mb-12 font-medium">
+        <p class="max-w-3xl mx-auto text-offset mb-12 font-medium" data-animate>
             O primeiro contato do seu cliente com a sua marca muitas vezes é através de um vídeo. Uma produção amadora pode custar clientes antes mesmo de você apresentar sua proposta.
         </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12" data-animate-stagger>
             {problems.map((problem) => (
                 <div class="space-y-4">
-                    <div class="bg-red-100 p-4 rounded-lg inline-block">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div class="bg-red-500/10 p-4 rounded-2xl inline-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={problem.icon} />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800">{problem.title}</h3>
-                    <p class="text-gray-600">{problem.description}</p>
+                    <h3 class="text-xl font-bold text-default">{problem.title}</h3>
+                    <p class="text-offset leading-relaxed">{problem.description}</p>
                 </div>
             ))}
         </div>

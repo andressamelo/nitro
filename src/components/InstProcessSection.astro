@@ -34,33 +34,27 @@ const steps: Step[] = [
 ];
 ---
 
-<section id="processo" class="py-16 md:py-24 bg-gray-50">
+<section id="processo" class="py-16 md:py-24 bg-offset">
     <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-800 mb-4">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-default mb-4" data-animate>
             Do Briefing à Entrega: Nosso Processo
         </h2>
-        <p class="max-w-3xl mx-auto text-gray-600 mb-12 font-medium">
+        <p class="max-w-3xl mx-auto text-offset mb-12 font-medium" data-animate>
             Cada projeto é único. Por isso, trabalhamos de forma estruturada para garantir que o resultado final represente sua empresa da melhor forma possível.
         </p>
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 text-left relative">
-            <div class="hidden md:block absolute top-[52px] left-0 w-full h-0.5 bg-gray-200" style="z-index: 0;"></div>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 text-left relative" data-animate-stagger>
+            <div class="hidden md:block absolute top-[52px] left-0 w-full h-px bg-border" style="z-index: 0;"></div>
             {steps.map((step) => (
-                <div class="bg-white p-6 rounded-lg shadow-lg z-10">
+                <div class="bg-default border border-default p-6 rounded-2xl shadow-sm z-10 transition-all duration-300 hover:-translate-y-1">
                     <div class="flex flex-col items-start gap-3 mb-3">
-                        <div class="custom-purple-bg text-white rounded-full h-12 w-12 flex items-center justify-center font-bold text-lg shrink-0">
+                        <div class="bg-primary text-purple-900 rounded-full h-12 w-12 flex items-center justify-center font-bold text-lg shrink-0">
                             {step.number}
                         </div>
-                        <h3 class="text-lg font-bold text-gray-800">{step.title}</h3>
+                        <h3 class="text-lg font-bold text-default">{step.title}</h3>
                     </div>
-                    <p class="text-gray-600 text-sm">{step.description}</p>
+                    <p class="text-offset text-sm leading-relaxed">{step.description}</p>
                 </div>
             ))}
         </div>
     </div>
 </section>
-
-<style>
-    .custom-purple-bg {
-        background-color: #581c87;
-    }
-</style>

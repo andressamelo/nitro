@@ -29,30 +29,27 @@ const steps: Step[] = [
 ];
 ---
 
-<section id="demonstracao" class="py-16 md:py-24 bg-gray-50">
+<section id="demonstracao" class="py-16 md:py-24 bg-offset">
     <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-800 mb-12">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-default mb-4" data-animate>
             Nosso Processo Simplificado para Criar seu Curso
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-left relative">
-            <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200" style="transform: translateY(-50%); z-index: 0;"></div>
+        <p class="max-w-3xl mx-auto text-offset mb-12 font-medium" data-animate>
+            Do planejamento à entrega, cuidamos de cada detalhe para que você só precise focar no seu conteúdo.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-left relative" data-animate-stagger>
+            <div class="hidden md:block absolute top-[52px] left-0 w-full h-px bg-border" style="z-index: 0;"></div>
             {steps.map((step) => (
-                <div class="bg-white p-6 rounded-lg shadow-lg z-10">
+                <div class="bg-default border border-default p-6 rounded-2xl shadow-sm z-10 transition-all duration-300 hover:-translate-y-1">
                     <div class="flex items-center gap-4 mb-4">
-                        <div class="custom-purple-600 text-white rounded-full h-12 w-12 flex items-center justify-center font-bold text-lg shrink-0">
+                        <div class="bg-primary text-purple-900 rounded-full h-12 w-12 flex items-center justify-center font-bold text-lg shrink-0">
                             {step.number}
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">{step.title}</h3>
+                        <h3 class="text-xl font-bold text-default">{step.title}</h3>
                     </div>
-                    <p class="text-gray-600">{step.description}</p>
+                    <p class="text-offset leading-relaxed">{step.description}</p>
                 </div>
             ))}
         </div>
     </div>
 </section>
-
-<style>
-    .custom-purple-600 { 
-        background-color: #581c87; 
-    }
-</style>

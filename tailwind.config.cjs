@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Inter Variable", ...defaultTheme.fontFamily.sans],
+        display: ["Space Grotesk Variable", "Inter Variable", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: "var(--color-primary)",

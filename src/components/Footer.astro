@@ -18,33 +18,6 @@ const socialLinks: Array<FooterLink> = [
 ];
 ---
 
-<script is:inline>
-  function initScrollAnimations() {
-    const elements = document.querySelectorAll("[data-animate], [data-animate-stagger]");
-    if (!elements.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.05, rootMargin: "0px 0px -20px 0px" }
-    );
-
-    elements.forEach((el) => observer.observe(el));
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initScrollAnimations);
-  } else {
-    initScrollAnimations();
-  }
-</script>
-
 <footer class="relative bg-gradient-to-b from-[#581c87] to-[#3b0764] text-white border-t-2 border-purple-600">
   <div class="container mx-auto px-6 py-12">
     <!-- Grid Layout -->

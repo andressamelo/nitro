@@ -67,9 +67,19 @@ const socialLinks: Array<FooterLink> = [
 
       <!-- Links Rápidos e Redes Sociais -->
       <div class="space-y-4">
-        <h3 class="text-xl font-bold mb-4 text-purple-200">Conecte-se</h3>
+        <h3 class="text-xl font-bold mb-4 text-purple-200">Serviços</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li><a href="/video-institucional" class="hover:text-white transition-colors">Vídeo Institucional</a></li>
+          <li><a href="/videoaulas" class="hover:text-white transition-colors">Videoaulas & Cursos</a></li>
+          <li>
+            <a href="/websites" class="inline-flex items-center gap-2 hover:text-white transition-colors">
+              Sites Profissionais
+              <span class="rounded-full bg-yellow-400 px-2 py-0.5 text-xs font-bold text-purple-900 leading-none">Novo</span>
+            </a>
+          </li>
+        </ul>
+        <h3 class="text-xl font-bold mt-8 mb-4 text-purple-200">Conecte-se</h3>
         <div class="space-y-4">
-          <p class="text-sm text-gray-300">Siga-nos nas redes sociais:</p>
           <ul class="flex gap-4 flex-wrap">
             {
               socialLinks.map((link) => (

@@ -1,0 +1,413 @@
+---
+import "@fontsource-variable/inter";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import ContactForm from "@components/ContactForm.astro";
+import WhatsAppButton from "@components/WhatsAppButton.astro";
+import { Icon } from "astro-icon/components";
+import "../styles/index.css";
+
+const { generator } = Astro;
+const description =
+    "A Nitro cria sites e landing pages profissionais para empresas, profissionais liberais e criadores de conteúdo. Design estratégico, SEO desde o início e integração perfeita com seus vídeos.";
+const pageUrl = "https://www.nitroag.com.br/websites";
+---
+
+<!doctype html>
+<html lang="pt-BR" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <meta name="generator" content={generator} />
+        <link rel="canonical" href={pageUrl} />
+
+        <title>Sites Profissionais | Landing Pages | Campinas - SP | Nitro Produtora</title>
+        <meta name="description" content={description} />
+        <meta name="keywords" content="criação de sites campinas, landing page profissional, site institucional, site para curso online, portfólio digital, desenvolvimento web campinas sp, sites que convertem" />
+        <meta name="author" content="Nitro Produtora" />
+        <meta name="robots" content="index, follow" />
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="Sites Profissionais | Nitro Produtora" />
+        <meta property="og:description" content="Criamos sites e landing pages que trabalham por você 24h. Design estratégico, SEO e integração com seus vídeos." />
+        <meta property="og:image" content="https://www.nitroag.com.br/assets/destaque.jpg" />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:site_name" content="Nitro Produtora" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sites Profissionais | Nitro Produtora" />
+        <meta name="twitter:description" content="Criamos sites e landing pages que trabalham por você 24h. Design estratégico, SEO e integração com seus vídeos." />
+        <meta name="twitter:image" content="https://www.nitroag.com.br/assets/destaque.jpg" />
+
+        <!-- JSON-LD Structured Data -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Criação de Sites e Landing Pages",
+            "description": "Desenvolvimento de sites profissionais, landing pages e portfólios digitais para empresas e profissionais em Campinas - SP.",
+            "provider": {
+                "@type": "LocalBusiness",
+                "name": "Nitro Produtora",
+                "url": "https://www.nitroag.com.br",
+                "telephone": "+55-19-99529-7915",
+                "email": "comercial@nitroag.com.br",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Campinas",
+                    "addressRegion": "SP",
+                    "addressCountry": "BR"
+                }
+            },
+            "areaServed": "Brasil",
+            "serviceType": "Desenvolvimento Web",
+            "url": "https://www.nitroag.com.br/websites"
+        }
+        </script>
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-S1C4HWFN3X"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-S1C4HWFN3X');
+        </script>
+
+        <!-- initialize theme -->
+        <script is:inline>
+            const themeSaved = localStorage.getItem("theme");
+            if (themeSaved) {
+                document.documentElement.dataset.theme = themeSaved;
+            } else {
+                const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
+            }
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
+                if (!localStorage.getItem("theme")) {
+                    document.documentElement.dataset.theme = event.matches ? "dark" : "light";
+                }
+            });
+        </script>
+        <style>
+            #page-header {
+                background-color: #1e1b4b !important;
+                border-bottom-color: transparent !important;
+            }
+            #page-header a, #page-header .btn, #page-header svg {
+                color: white !important;
+            }
+        </style>
+    </head>
+    <body class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white">
+
+        <Header
+            navItems={[
+                { title: 'Início', url: '#top' },
+                { title: 'O Que Criamos', url: '#servicos' },
+                { title: 'Como Funciona', url: '#processo' },
+                { title: 'Contato', url: '#contato' },
+            ]}
+            modalBgClass="bg-indigo-950 text-white"
+        />
+
+        <main>
+            <!-- HERO -->
+            <header id="top" class="websites-hero text-white">
+                <div class="container mx-auto px-6 py-24 text-center">
+                    <span class="mb-6 inline-block rounded-full bg-yellow-400/20 px-4 py-1.5 text-sm font-semibold text-yellow-300 ring-1 ring-yellow-400/40">
+                        Nova área da Nitro
+                    </span>
+                    <h1 class="mb-6 text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
+                        Sites que trabalham por você,<br />
+                        <span class="text-yellow-400">24 horas por dia</span>
+                    </h1>
+                    <p class="mx-auto mb-10 max-w-2xl text-lg text-gray-300 md:text-xl">
+                        Criamos sites e landing pages profissionais para que sua marca tenha uma presença digital completa — e converta visitantes em clientes enquanto você foca no que faz de melhor.
+                    </p>
+                    <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+                        <a href="#contato" class="rounded-full bg-yellow-400 px-8 py-4 font-bold text-purple-900 transition-all duration-300 hover:scale-105 hover:bg-yellow-300 hover:shadow-lg hover:shadow-yellow-400/30">
+                            Quero meu Site
+                        </a>
+                        <a href="#servicos" class="rounded-full border border-white/30 px-8 py-4 font-semibold text-white transition-all duration-300 hover:border-white/60 hover:bg-white/10">
+                            Ver o que criamos
+                        </a>
+                    </div>
+                </div>
+            </header>
+
+            <!-- PROBLEMA -->
+            <section class="py-20 bg-default">
+                <div class="container mx-auto px-6">
+                    <div class="mx-auto max-w-3xl text-center mb-14">
+                        <h2 class="text-3xl font-extrabold tracking-tight text-primary md:text-4xl">
+                            Seus vídeos são incríveis. Mas onde as pessoas te encontram?
+                        </h2>
+                        <p class="mt-4 text-lg text-offset">
+                            Redes sociais são ótimas — mas não são suficientes. Sem um site, você está perdendo oportunidades todos os dias.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                        {[
+                            {
+                                icon: "mdi:trending-down",
+                                title: "Algoritmo te limita",
+                                desc: "O alcance orgânico nas redes cai todo ano. Seu conteúdo depende de uma plataforma que você não controla.",
+                            },
+                            {
+                                icon: "mdi:magnify-close",
+                                title: "Invisível no Google",
+                                desc: "Perfis de Instagram e TikTok não aparecem nas buscas do Google. Quem te procura pelo serviço, não te acha.",
+                            },
+                            {
+                                icon: "mdi:link-off",
+                                title: "Link na bio não converte",
+                                desc: "Uma única linha de link não é suficiente para apresentar tudo que você oferece e capturar o cliente certo.",
+                            },
+                            {
+                                icon: "mdi:account-question-outline",
+                                title: "Falta de credibilidade",
+                                desc: "Empresas e clientes maiores esperam um site profissional antes de fechar qualquer negócio.",
+                            },
+                        ].map(({ icon, title, desc }) => (
+                            <div class="flex flex-col gap-4 rounded-xl border border-default bg-offset p-6">
+                                <div class="flex size-12 items-center justify-center rounded-full bg-red-500/10 text-red-400">
+                                    <Icon name={icon} class="size-6" />
+                                </div>
+                                <p class="font-bold text-lg">{title}</p>
+                                <p class="text-sm leading-relaxed text-offset">{desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <!-- SOLUÇÃO / SERVIÇOS -->
+            <section id="servicos" class="scroll-mt-24 py-20 bg-offset">
+                <div class="container mx-auto px-6">
+                    <div class="mx-auto max-w-3xl text-center mb-14">
+                        <h2 class="text-3xl font-extrabold tracking-tight text-primary md:text-4xl">
+                            O Que Criamos
+                        </h2>
+                        <p class="mt-4 text-lg text-offset">
+                            Sites pensados para cada objetivo — do lançamento ao posicionamento de marca.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                        {[
+                            {
+                                icon: "mdi:rocket-launch-outline",
+                                title: "Landing Page",
+                                badge: "Mais pedido",
+                                desc: "Página focada em conversão para campanhas, lançamentos de produtos ou captação de leads. Cada elemento é pensado para transformar visitante em cliente.",
+                                items: ["Alta taxa de conversão", "Integração com WhatsApp", "Formulário de captação", "SEO otimizado"],
+                            },
+                            {
+                                icon: "mdi:domain",
+                                title: "Site Institucional",
+                                badge: null,
+                                desc: "Presença digital completa para empresas e profissionais liberais. Apresenta seus serviços, equipe e diferenciais com credibilidade e profissionalismo.",
+                                items: ["Múltiplas páginas", "Blog e novidades", "Google Maps integrado", "Certificado SSL"],
+                            },
+                            {
+                                icon: "mdi:school-outline",
+                                title: "Site para Cursos e Videoaulas",
+                                badge: null,
+                                desc: "Plataforma personalizada para quem vende conhecimento online. Integrado com Hotmart, Kiwify e outras plataformas — e mostrando seus vídeos em destaque.",
+                                items: ["Integração com plataformas", "Player de vídeo embed", "Página de vendas", "Depoimentos e provas sociais"],
+                            },
+                            {
+                                icon: "mdi:palette-outline",
+                                title: "Portfólio Digital",
+                                badge: null,
+                                desc: "Para fotógrafos, videomakers, designers e criativos que precisam mostrar seu trabalho de forma impactante. Seus projetos em primeiro plano.",
+                                items: ["Galeria de projetos", "Player de vídeo", "Formulário de contato", "Identidade visual personalizada"],
+                            },
+                        ].map(({ icon, title, badge, desc, items }) => (
+                            <div class="relative flex flex-col gap-5 rounded-2xl border border-default bg-default p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-900/20">
+                                {badge && (
+                                    <span class="absolute -top-3 right-6 rounded-full bg-yellow-400 px-4 py-1 text-xs font-bold text-purple-900">
+                                        {badge}
+                                    </span>
+                                )}
+                                <div class="flex size-14 items-center justify-center rounded-2xl bg-purple-900/30 text-primary">
+                                    <Icon name={icon} class="size-7" />
+                                </div>
+                                <h3 class="text-xl font-extrabold">{title}</h3>
+                                <p class="text-sm leading-relaxed text-offset">{desc}</p>
+                                <ul class="space-y-2">
+                                    {items.map((item) => (
+                                        <li class="flex items-center gap-2 text-sm">
+                                            <Icon name="mdi:check-circle" class="size-4 flex-shrink-0 text-primary" />
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <a href="#contato" class="mt-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary px-5 py-3 font-semibold text-primary transition-all duration-200 hover:bg-primary hover:text-white">
+                                    Quero esse site
+                                    <Icon name="mdi:arrow-right" class="size-4" />
+                                </a>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <!-- DIFERENCIAL: INTEGRAÇÃO COM VÍDEOS -->
+            <section class="py-20 bg-default">
+                <div class="container mx-auto px-6">
+                    <div class="overflow-hidden rounded-2xl border border-purple-700/40 bg-gradient-to-br from-purple-950/80 to-indigo-950/80">
+                        <div class="flex flex-col gap-10 p-8 md:flex-row md:items-center md:p-14">
+                            <div class="flex-1 space-y-5">
+                                <span class="inline-block rounded-full bg-yellow-400/20 px-4 py-1.5 text-sm font-semibold text-yellow-300 ring-1 ring-yellow-400/40">
+                                    Exclusivo Nitro
+                                </span>
+                                <h2 class="text-3xl font-extrabold leading-tight text-white md:text-4xl">
+                                    Sites feitos para<br />
+                                    <span class="text-yellow-400">exibir seus vídeos</span>
+                                </h2>
+                                <p class="max-w-lg text-gray-300 leading-relaxed">
+                                    Como produtora de vídeos, sabemos exatamente como destacar o seu conteúdo audiovisual. Nossos sites são desenvolvidos para que seus vídeos sejam o centro da experiência — não um detalhe esquecido no rodapé.
+                                </p>
+                                <ul class="space-y-3">
+                                    {[
+                                        "Player de vídeo integrado e responsivo",
+                                        "Hero com vídeo de fundo",
+                                        "Seção de portfólio de vídeos",
+                                        "Integração com YouTube e Vimeo",
+                                        "Velocidade de carregamento otimizada",
+                                    ].map((item) => (
+                                        <li class="flex items-center gap-3 text-gray-200">
+                                            <Icon name="mdi:check-circle" class="size-5 flex-shrink-0 text-yellow-400" />
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <a href="#contato" class="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-7 py-3 font-bold text-purple-900 transition-all duration-300 hover:scale-105 hover:bg-yellow-300">
+                                    Quero um site com meus vídeos
+                                    <Icon name="mdi:arrow-right" class="size-5" />
+                                </a>
+                            </div>
+                            <div class="md:w-80 flex-shrink-0">
+                                <div class="aspect-video overflow-hidden rounded-xl border border-white/10 bg-white/5 shadow-2xl">
+                                    <div class="flex h-full flex-col">
+                                        <div class="flex gap-1.5 bg-gray-800/80 px-4 py-3">
+                                            <span class="size-3 rounded-full bg-red-500"></span>
+                                            <span class="size-3 rounded-full bg-yellow-500"></span>
+                                            <span class="size-3 rounded-full bg-green-500"></span>
+                                        </div>
+                                        <div class="flex flex-1 items-center justify-center bg-gradient-to-br from-purple-900/50 to-indigo-900/50 p-6 text-center">
+                                            <div class="space-y-3">
+                                                <div class="mx-auto flex size-16 items-center justify-center rounded-full bg-white/10">
+                                                    <Icon name="mdi:play-circle-outline" class="size-10 text-white" />
+                                                </div>
+                                                <p class="text-sm font-semibold text-gray-300">Seu vídeo em destaque</p>
+                                                <p class="text-xs text-gray-500">Integrado e responsivo</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROCESSO -->
+            <section id="processo" class="scroll-mt-24 py-20 bg-offset">
+                <div class="container mx-auto px-6">
+                    <div class="mx-auto max-w-3xl text-center mb-14">
+                        <h2 class="text-3xl font-extrabold tracking-tight text-primary md:text-4xl">
+                            Como Funciona
+                        </h2>
+                        <p class="mt-4 text-lg text-offset">
+                            Do briefing ao site no ar — um processo simples e sem surpresas.
+                        </p>
+                    </div>
+
+                    <div class="relative mx-auto max-w-4xl">
+                        <div class="hidden md:block absolute left-1/2 top-8 h-[calc(100%-4rem)] w-px -translate-x-1/2 bg-gradient-to-b from-purple-700 via-purple-700/50 to-transparent"></div>
+
+                        <div class="space-y-10">
+                            {[
+                                {
+                                    step: "01",
+                                    title: "Briefing & Estratégia",
+                                    desc: "Entendemos seu negócio, público-alvo e objetivos. Definimos juntos a estrutura, o conteúdo e a estratégia de conversão do site.",
+                                    icon: "mdi:clipboard-text-outline",
+                                    side: "left",
+                                },
+                                {
+                                    step: "02",
+                                    title: "Design & Aprovação",
+                                    desc: "Criamos o layout visual alinhado com a identidade da sua marca. Você aprova cada detalhe antes de partirmos para o desenvolvimento.",
+                                    icon: "mdi:palette-outline",
+                                    side: "right",
+                                },
+                                {
+                                    step: "03",
+                                    title: "Desenvolvimento",
+                                    desc: "Construímos o site com código limpo, otimizado para velocidade e SEO — e responsivo para funcionar perfeitamente em qualquer dispositivo.",
+                                    icon: "mdi:code-braces",
+                                    side: "left",
+                                },
+                                {
+                                    step: "04",
+                                    title: "Publicação & Entrega",
+                                    desc: "Colocamos o site no ar com domínio, hospedagem configurada e todas as integrações funcionando. Você recebe o site pronto para usar.",
+                                    icon: "mdi:rocket-launch-outline",
+                                    side: "right",
+                                },
+                            ].map(({ step, title, desc, icon, side }) => (
+                                <div class={`flex items-start gap-6 md:gap-10 ${side === "right" ? "md:flex-row-reverse" : ""}`}>
+                                    <div class={`flex flex-col items-center ${side === "right" ? "md:items-start" : "md:items-end"} flex-1 gap-3`}>
+                                        <div class={`rounded-2xl border border-default bg-default p-6 shadow-sm w-full ${side === "right" ? "md:text-left" : "md:text-right"}`}>
+                                            <p class="mb-1 text-xs font-bold uppercase tracking-widest text-primary">Passo {step}</p>
+                                            <h3 class="mb-2 text-xl font-extrabold">{title}</h3>
+                                            <p class="text-sm leading-relaxed text-offset">{desc}</p>
+                                        </div>
+                                    </div>
+                                    <div class="relative z-10 flex-shrink-0">
+                                        <div class="flex size-14 items-center justify-center rounded-full border-2 border-primary bg-default shadow-lg">
+                                            <Icon name={icon} class="size-6 text-primary" />
+                                        </div>
+                                    </div>
+                                    <div class="flex-1 hidden md:block"></div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTATO -->
+            <ContactForm
+                title="Pronto para ter um site profissional?"
+                description="Preencha o formulário e nossa equipe entrará em contato para entender seu projeto e enviar uma proposta personalizada — sem compromisso."
+                accessKey="38c81037-4cb7-4a3d-a25b-7333afbf9bad"
+                messageLabel="Conta um pouco sobre o site que você precisa"
+                messagePlaceholder="Ex: Preciso de uma landing page para lançar meu curso online, com integração com a Hotmart e um player de vídeo na página..."
+            />
+        </main>
+
+        <Footer />
+        <WhatsAppButton phoneNumber="5519995297915" />
+    </body>
+</html>
+
+<style>
+    .websites-hero {
+        background-color: #1e1b4b;
+        background-image:
+            linear-gradient(135deg, #1e1b4bd9 0%, #312e81e8 50%, #1e1b4bf2 100%),
+            radial-gradient(ellipse at 20% 50%, #7c3aed33 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 20%, #4f46e533 0%, transparent 50%);
+        padding-top: 7rem;
+    }
+</style>
